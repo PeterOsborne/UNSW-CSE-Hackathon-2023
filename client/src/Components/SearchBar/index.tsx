@@ -5,16 +5,19 @@ interface Props {
 
 }
 
-const FavouriteColour = () => {
+const Counter = () => {
 
-    const [colour, setColour] = useState("red");
+    const [count, setCount] = useState(0);
 
     return (
         <div>
-            My favourite colour is {colour}!
+            <p>You clicked {count} times</p>
+            <button onClick={() => setCount(count + 1)}>
+                Click me
+            </button>
         </div>
-    )
+    );
 
 }
 
-export default FavouriteColour;
+export default Counter;
