@@ -13,24 +13,39 @@ interface Props {
 const ListSpotWindow = () => {
 
   return (
-    <div className="bg-white border-4 rounded-lg">
+    <div>
+        <div className="bg-white border-4 rounded-lg">
+        <div className="flex flex-col">
+            <div className="flex font-bold justify-center text-lg">Lease a parking spot</div>
+        </div>
 
-      <div className="flex flex-col">
-        <div className="flex">Lease a parking spot</div>
-      </div>
-
-      <div className="grid grid-cols-2">
-        <div className="p-2">Parking Type</div>
-        <div className="p-2"><ParkingTypeDropDown /></div>
-        <div className="p-2">Spot Availability</div>
-        <div className="p-2">(spotAvaialbiulty here)</div>
-        <div className="p-2">Spot Price</div>
-        <div className="p-2">(spotprice here)</div>
-      </div>
-
-      <div className="flex flex-col">
-        <div className="flex">Post parking spot!</div>
-      </div>
+        <div className="grid grid-cols-2">
+            <div className="p-2 font-medium">Parking Type</div>
+            <div className="p-2"><ParkingTypeDropDown /></div>
+            <div className="p-2 font-medium">Spot Availability</div>
+            <div className="p-2 flex flex-col">
+                <div>
+                <input className="w-3/12 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="start_avail" type="text" placeholder="00:00"></input> - <input className="w-3/12 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="start_avail" type="text" placeholder="24:00"></input>
+                </div>
+                <div className="flex justify-center p-3">
+                    <button className="flex text-sm w-8/12 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    + Add Availability
+                    </button>
+                </div>
+            </div>
+            <div className="p-2 font-medium">Spot Price</div>
+            <div className="p-2">
+            <div>
+                $ <input className="w-3/12 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="start_avail" type="text" placeholder="1.00"></input>/hour
+            </div>
+            </div>
+        </div>
+        </div>
+        <div className="flex flex-col pt-2">
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Post parking spot!
+            </button>
+        </div>
     </div>
   );
 };
