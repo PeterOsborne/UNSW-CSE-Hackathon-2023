@@ -5,6 +5,7 @@ import { ButtonGroup, ToggleButtonGroup, ToggleButton, Button } from 'react-boot
 
 
 import './style.scss';
+import ScrollBox from '../../Components/ScrollBox';
 
 const Mapback = () => {
     return (
@@ -66,7 +67,7 @@ export default function Home() {
 
             <p>This will be signin button</p>
             <div className='map-container'>
-                <Mapback/>
+                <p> This is the map!</p>
             </div>
         </div>
     )

@@ -5,19 +5,31 @@ interface Props {
 
 }
 
-const SearchBar = () => {
+const SearchBar: React.FC = () => {
+    const [searchTerm, setSearchTerm] = useState('');
 
-    const [count, setCount] = useState(0);
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchTerm(event.target.value);
+    };
+
+    const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        // Handle the form submission, e.g., perform search
+        console.log('Search term:', searchTerm);
+    };
 
     return (
-        <div>
-            <p>You clicked {count} times</p>
-            <button onClick={() => setCount(count + 1)}>
-                Click me
-            </button>
-        </div>
+        <form onSubmit={handleFormSubmit}>
+            <input
+                type="text"
+                value={searchTerm}
+                onChange={handleInputChange}
+                placeholder="Enter your search term"
+            />
+            <button type="submit">Search</button>
+        </form>
     );
-
 }
+
 
 export default SearchBar;
