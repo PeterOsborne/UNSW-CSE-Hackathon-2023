@@ -9,9 +9,9 @@ import { MarkerF, InfoWindow } from '@react-google-maps/api'
 import './style.scss';
 import ScrollBox from '../../Components/ScrollBox';
 import ListSpotWindow from "../../Components/ListSpotWindow";
-import LookingToBox from "../../Components/LookingToBox/index"
-
-
+interface PropsLookingToBox {
+    option: number //if 0 then rent, if 1 then offer
+}
 
 
 interface marktype {
@@ -101,41 +101,81 @@ const Mapback = (props: MapProps) => {
 
 
 
+const LookingToBox = (props: PropsLookingToBox) => {
 
-const [items, setItems] = useState<Place[]>([
-    // { placeDistance: 8, placePriceRate: 3, placeName: '10 Norton St, Kingsford NSW 2032', placeAvailability: '09:00 - 16:00' },
-    // { placeDistance: 6, placePriceRate: 2, placeName: '20 Milford St, Kingsford NSW 2032', placeAvailability: '09:00 - 16:00' },
-    // { placeDistance: 12, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00' },
-    // { placeDistance: 12, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00' },
-    // { placeDistance: 12, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00' },
-    // { placeDistance: 12, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00' },
-    // { placeDistance: 12, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00' },
-    // { placeDistance: 12, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00' },
-    // { placeDistance: 12, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00' },
-    // { placeDistance: 12, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00' },
-    // { placeDistance: 12, placePriceRate: 1, placeName: '15 Duke St, Kengiston NSW 2033', placeAvailability: '09:00 - 16:00' }
-]);
+    const [items, setItems] = useState<Place[]>([
+        // { placeDistance: 8, placePriceRate: 3, placeName: '10 Norton St, Kingsford NSW 2032', placeAvailability: '09:00 - 16:00' },
+        // { placeDistance: 6, placePriceRate: 2, placeName: '20 Milford St, Kingsford NSW 2032', placeAvailability: '09:00 - 16:00' },
+        // { placeDistance: 12, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00' },
+        // { placeDistance: 12, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00' },
+        // { placeDistance: 12, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00' },
+        // { placeDistance: 12, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00' },
+        // { placeDistance: 12, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00' },
+        // { placeDistance: 12, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00' },
+        // { placeDistance: 12, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00' },
+        // { placeDistance: 12, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00' },
+        // { placeDistance: 12, placePriceRate: 1, placeName: '15 Duke St, Kengiston NSW 2033', placeAvailability: '09:00 - 16:00' }
+    ]);
 
-const [selected, setSelected] = useState(items[0]);
+    const [selected, setSelected] = useState(items[0]);
 
-if (props.option == 0) {
+    const [value, setValue] = React.useState('distance');
+    function handleChange(e: any) {
+        setValue(e.target.value);
+        if (value === "distance") {
+          items.sort((place1: Place, place2: Place) =>  place1.placeDistance - place2.placeDistance);
+        } else if (value === "price") {
+          items.sort((place1: Place, place2: Place) =>  place1.placePriceRate - place2.placePriceRate);
+        } else if (value === "alphabetically") {
+          items.sort((place1: Place, place2: Place) => {
+              if (place1.placeName < place2.placeName) {
+                  return -1;
+              }
+              if (place1.placeName > place2.placeName) {
+                  return 1;
+              }
+              return 0;
+          });    
+        }
+      }
+
+    if (props.option == 0) {
+        return (
+            <>
+                <div>
+                    <div className="relative w-full lg:max-w-sm">
+                        <div className="flex flex-col bg-white rounded-lg pl-7 pr-7">
+                        <form method="post">
+                                <label>
+                                <select value={value} name="selectedSort" onChange={handleChange}>
+                                    <option value="distance">Distance</option>
+                                    <option value="price">Price</option>
+                                    <option value="alphabetically">Alphabetically</option>
+                                </select>
+                                </label>
+                            </form>
+                        </div>
+    
+                        </div>
+                    </div>
+                
+                <div className="">
+                    <div className={classNames("rentSpot")}>
+                        <ScrollBox items={items} onSelect={(selected: Place, index: number) => {
+                            setSelected(selected);
+
+                        }}></ScrollBox>
+                    </div>
+
+                </div>
+            </>
+        );
+    }
     return (
-        <div className="">
-            <div className={classNames("rentSpot")}>
-                <ScrollBox items={items} onSelect={(selected: Place, index: number) => {
-                    setSelected(selected);
-
-                }}></ScrollBox>
-            </div>
-
-        </div>
+        <>
+            <ListSpotWindow></ListSpotWindow>
+        </>
     );
-}
-return (
-    <>
-        <ListSpotWindow></ListSpotWindow>
-    </>
-);
 };
 
 export default function Home() {
@@ -174,12 +214,6 @@ export default function Home() {
                 <LookingToBox option={menuOption} />
 
             </div>
-
-
-
-
-
-
         </div>
     )
 }
