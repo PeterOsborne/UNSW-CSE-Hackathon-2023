@@ -1,6 +1,7 @@
 import React from 'react';
 import { createBrowserRouter, BrowserRouter, Routes, Route, Link, NavLink, createRoutesFromElements, RouterProvider } from 'react-router-dom';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Layout from "./Components/Layout/index"
 import Home from "./Pages/Home"
@@ -14,7 +15,6 @@ function App() {
     <div className="App">
       <Layout>
         <Routes>
-          <ScrollBox /> // Testing ScrollBox
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
