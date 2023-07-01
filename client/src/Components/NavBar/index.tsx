@@ -1,8 +1,16 @@
 import { Link } from 'react-router-dom'
 import './index.scss'
 import Logo from '../Images/Fishes.png'
+import React, { useState } from 'react';
 
 export const NavBar = () => {
+
+    const [isToggled, setIsToggled] = useState(false);
+
+    const handleClick = () => {
+      setIsToggled(!isToggled);
+    };
+
 
     return (
         <>
@@ -27,7 +35,7 @@ export const NavBar = () => {
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" />
                                         </svg>
                                     </div>
-                                    <div className="font-medium size-md text-l">Satellite View</div>
+                                    <div className="font-medium size-md text-l" onClick={handleClick}>Satellite View {isToggled ? 'ON' : 'OFF'}</div>
                                 </div>
                             </div>
 
@@ -48,8 +56,8 @@ export const NavBar = () => {
                                         </svg>
                                     </div>
                                     <div className="font-medium size-md text-l">
-                                        <Link to="/about" className='about-container bg-white rounded-lg shadow-md'>
-                                            <h2 className='logo-container bg-white rounded-lg shadow-md'>About</h2>
+                                        <Link to="/about" className='bg-white rounded-lg shadow-md'>
+                                            <h2 className=''>About</h2>
                                         </Link>
                                     </div>
                                 </div>
@@ -65,8 +73,8 @@ export const NavBar = () => {
                                         </svg>
                                     </div>
                                     <div className="font-medium size-md text-l">
-                                        <Link to="/contact" className='contact-container bg-white rounded-lg shadow-md'>
-                                            <h2 className='logo-container bg-white rounded-lg shadow-md'>Contact</h2>
+                                        <Link to="/contact" className='bg-white rounded-lg shadow-md'>
+                                            <h2 className=''>Contact</h2>
                                         </Link>
                                     </div>
                                 </div>
