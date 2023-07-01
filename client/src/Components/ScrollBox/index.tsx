@@ -6,6 +6,7 @@ interface Place {
   placeDistance: number;
   placePriceRate: number;
   placeName: string;
+  placeAvailability: string;
 }
 interface Props {
   items: Place[],
@@ -38,33 +39,36 @@ const ScrollBox = (props: Props) => {
 
   return (
     <div className="scrollbar">
-      <div className="flex flex-col">
-        <div>Sort by: </div>
+      <div className="flex flex-col bg-white rounded-lg pl-7 pr-7">
+        <div className="font-medium text-lg">Sort by: </div>
       </div>
       <div className="">
-        <ul className=""> {/* Padding of 2 around all the boxes */}
+        <ul className=""> {/* overflow-y-scroll */}
 
           {props.items.map((item, index) => (
             <li key={index} onClick={() => {
 
               setSelected(index)
             }}>
-              <div className={classNames("pt-2", "box-item-cont")} >
-                <div className={classNames("border-2 ", "box-item", index === selected && "selected")}>
-                  <div>
-                    <strong>placeName:</strong> {item.placeName}
+              <div className={classNames("p-1", "box-item-cont")} >
+                <div className={classNames("pl-6 pt-2 pb-2 pr-6", "box-item", index === selected && "selected")}>
+                  <div className="font-bold">
+                    {item.placeName}
                   </div>
                   <div>
-                    <strong>placeDistance:</strong> {item.placeDistance}
+                    {item.placeDistance} km
                   </div>
                   <div>
-                    <strong>placePriceRate:</strong> {item.placePriceRate}
+                    ${item.placePriceRate}/hour
                   </div>
-
+                  <div>
+                    Available: {item.placeAvailability}
+                  </div>
                 </div>
               </div>
             </li>
           ))}
+
         </ul>
       </div>
     </div>

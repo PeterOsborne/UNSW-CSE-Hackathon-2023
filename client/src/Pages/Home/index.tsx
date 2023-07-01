@@ -17,6 +17,7 @@ interface Place {
     placeDistance: number;
     placePriceRate: number;
     placeName: string;
+    placeAvailability: string;
 }
 
 
@@ -101,17 +102,24 @@ const Mapback = (props: MapProps) => {
 const LookingToBox = (props: PropsLookingToBox) => {
 
     const [items, setItems] = useState<Place[]>([
-        { placeDistance: 8, placePriceRate: 3, placeName: 'place 1' },
-        { placeDistance: 6, placePriceRate: 2, placeName: 'place 2' },
-        { placeDistance: 12, placePriceRate: 1, placeName: 'place 3' },
-        { placeDistance: 12, placePriceRate: 1, placeName: 'place 4' }
+        { placeDistance: 8, placePriceRate: 3, placeName: '10 Norton St, Kingsford NSW 2032', placeAvailability: '09:00 - 16:00' },
+        { placeDistance: 6, placePriceRate: 2, placeName: '20 Milford St, Kingsford NSW 2032', placeAvailability: '09:00 - 16:00' },
+        { placeDistance: 12, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00' },
+        { placeDistance: 12, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00' },
+        { placeDistance: 12, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00' },
+        { placeDistance: 12, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00' },
+        { placeDistance: 12, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00' },
+        { placeDistance: 12, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00' },
+        { placeDistance: 12, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00' },
+        { placeDistance: 12, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00' },
+        { placeDistance: 12, placePriceRate: 1, placeName: '15 Duke St, Kengiston NSW 2033', placeAvailability: '09:00 - 16:00' }
     ]);
 
     const [selected, setSelected] = useState(items[0]);
 
     if (props.option == 0) {
         return (
-            <>
+            <div className="">
                 <div className={classNames("rentSpot")}>
                     <ScrollBox items={items} onSelect={(selected: Place, index: number) => {
                         setSelected(selected);
@@ -119,7 +127,7 @@ const LookingToBox = (props: PropsLookingToBox) => {
                     }}></ScrollBox>
                 </div>
 
-            </>
+            </div>
         );
     }
     return (
@@ -142,23 +150,21 @@ export default function Home() {
     return (
         <div className='home-container'>
             <div className='menu'>
-                <p>
+                <p className="text-3xl font-medium p-2">
                     Looking to:
                 </p>
-                <ToggleButtonGroup type="radio" name="options" defaultValue={0} onChange={(e) => setMenuOption(e)}>
-                    <ToggleButton id="rent-spot" variant="dark" value={0}>
-                        Rent a Spot
-                    </ToggleButton>
-                    <ToggleButton id="offer-spots" variant="dark" value={1}>
-                        Offer a spot
-                    </ToggleButton>
-                </ToggleButtonGroup>
-
+                <div className="p-2">
+                    <ToggleButtonGroup type="radio" name="options" defaultValue={0} onChange={(e) => setMenuOption(e)}>
+                        <ToggleButton id="rent-spot" variant="dark" value={0}>
+                            Rent a Spot
+                        </ToggleButton>
+                        <ToggleButton id="offer-spots" variant="dark" value={1}>
+                            Offer a spot
+                        </ToggleButton>
+                    </ToggleButtonGroup>
+                </div>
                 <LookingToBox option={menuOption} />
 
-                {/* <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
-                    toggle Maps
-                </button> */}
             </div>
 
 

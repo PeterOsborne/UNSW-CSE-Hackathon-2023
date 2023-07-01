@@ -1,13 +1,18 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
 .scrollbar {
     height: 100px;
 
     // display: flex;
 
     .box-item {
-        width: 50%;
+        width: 100%;
         text-align: left;
         border-width: 0;
         border-color: white;
+        background-color: whitesmoke;
         border-radius: 10px;
         transition: all 0.3s;
         backdrop-filter: blur(2px);
@@ -16,12 +21,12 @@
     }
 
     .box-item:hover {
-        background-color: rgb(146, 146, 146, 0.1);
-        box-shadow: 0.3em 0.3em 1em rgba(0, 0, 0, 0.1);
+        background-color: rgb(225, 251, 255);
+        box-shadow: 0.3em 0.3em 1em rgba(0, 0, 0, 1);
     }
 
     .selected {
-        background-color: rgba(66, 66, 66, 0.137) !important;
+        background-color: rgb(97, 176, 255) !important;
         box-shadow: 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
     }
 
