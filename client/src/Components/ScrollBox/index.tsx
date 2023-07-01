@@ -11,7 +11,8 @@ const ScrollBox = () => {
   const [items, setItems] = useState<Place[]>([
     { placeDistance: 8, placePriceRate: 3, placeName: 'place 1' },
     { placeDistance: 6, placePriceRate: 2, placeName: 'place 2' },
-    { placeDistance: 12, placePriceRate: 1, placeName: 'place 3' }
+    { placeDistance: 12, placePriceRate: 1, placeName: 'place 3' },
+    { placeDistance: 12, placePriceRate: 1, placeName: 'place 4' }
   ]);
 
   const addItem = () => {
@@ -29,12 +30,12 @@ const ScrollBox = () => {
 
   return (
     <div>
-      <div className="overflow-y-scroll">
+      <div className="overflow-y-scroll h-10">
         <ul>
           {items.map((item, index) => (
             <li key={index}>
               <div>
-                <strong>placeName:</strong> {item.placeName}
+                <strong className="text-blue-500">placeName:</strong> {item.placeName}
               </div>
               <div>
                 <strong>placeDistance:</strong> {item.placeDistance}
