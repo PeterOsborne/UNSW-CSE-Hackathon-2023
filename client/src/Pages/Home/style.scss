@@ -1,0 +1,15 @@
+.home-container {
+    height: 100%;
+    background-color: red;
+
+    .map-container{
+        position: absolute;
+        background-color: lightgreen;
+        height: 100%;
+        margin: 0;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        z-index: -1;
+    }
+} 
