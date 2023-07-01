@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ScrollBox from "../ScrollBox";
 import ListSpotWindow from "../ListSpotWindow";
 import classNames from 'classnames';
@@ -34,12 +34,19 @@ export const LookingToBox = (props: PropsLookingToBox) => {
     const [selected, setSelected] = useState(items[0]);
 
     const [value, setValue] = React.useState('distance');
+
+    useEffect(() => {
+        // asdasd
+
+    }, items);
     function handleChange(e: any) {
         setValue(e.target.value);
-        if (value === "distance") {
-            items.sort((place1: Place, place2: Place) => place1.placeDistance - place2.placeDistance);
-        } else if (value === "price") {
-            items.sort((place1: Place, place2: Place) => place1.placePriceRate - place2.placePriceRate);
+        if (value === "price") {
+
+            setItems(items.sort((place1: Place, place2: Place) => place1.placeDistance - place2.placeDistance));
+        } else if (value === "distance") {
+
+            setItems(items.sort((place1: Place, place2: Place) => place1.placePriceRate - place2.placePriceRate));
         } else if (value === "alphabetically") {
             items.sort((place1: Place, place2: Place) => {
                 if (place1.placeName < place2.placeName) {
