@@ -20,12 +20,12 @@ const ListSpotWindow = () => {
       </div>
 
       <div className="grid grid-cols-2">
-        <div className="">Parking Type</div>
-        <div className=""><ParkingTypeDropDown /></div>
-        <div className="">Spot Availability</div>
-        <div className="">(spotAvaialbiulty here)</div>
-        <div className="">Spot Price</div>
-        <div className="">(spotprice here)</div>
+        <div className="p-2">Parking Type</div>
+        <div className="p-2"><ParkingTypeDropDown /></div>
+        <div className="p-2">Spot Availability</div>
+        <div className="p-2">(spotAvaialbiulty here)</div>
+        <div className="p-2">Spot Price</div>
+        <div className="p-2">(spotprice here)</div>
       </div>
 
       <div className="flex flex-col">
