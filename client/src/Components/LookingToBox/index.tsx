@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ScrollBox from "../ScrollBox";
 import ListSpotWindow from "../ListSpotWindow";
 import classNames from 'classnames';
@@ -11,7 +11,8 @@ import { getData, setData } from "../../Backend/dataStore";
 interface PropsLookingToBox {
     option: number //if 0 then rent, if 1 then offer
     haveMadeNewSpot: marktype[]
-    mapref: GoogleMap | null
+    mapref: GoogleMap | null,
+    changelastmarker: () => void;
 }
 interface marktype {
     lat: number,
@@ -35,16 +36,18 @@ export const LookingToBox = (props: PropsLookingToBox) => {
     const [selected, setSelected] = useState(items[0]);
 
     const [value, setValue] = React.useState('distance');
+
+
     function handleChange(e: any) {
         let data = getData();
         let places = data.places;
         setValue(e.target.value);
-        if (value === "distance") {
+        if (value === "price") {
             console.log("distance");
             console.log(places);
             places.sort((place1: Place, place2: Place) => place1.placeDistance - place2.placeDistance);
             console.log(places);
-        } else if (value === "price") {
+        } else if (value === "distance") {
             console.log("price");
             places.sort((place1: Place, place2: Place) => place1.placePriceRate - place2.placePriceRate);
         } else if (value === "alphabetically") {
@@ -103,7 +106,9 @@ export const LookingToBox = (props: PropsLookingToBox) => {
     }
     return (
         <>
-            <ListSpotWindow markers={props.haveMadeNewSpot} ></ListSpotWindow>
+            <ListSpotWindow markers={props.haveMadeNewSpot} changelastmarker={function (): void {
+                props.changelastmarker()
+            }} ></ListSpotWindow>
         </>
     );
 };
