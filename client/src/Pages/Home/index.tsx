@@ -142,39 +142,37 @@ const LookingToBox = (props: PropsLookingToBox) => {
 
     if (props.option == 0) {
         return (
-            <> 
-            <div className="flex flex-col bg-white rounded-lg pl-7 pr-7">
+            <>
+                <div className="flex flex-col bg-white rounded-lg pl-7 pr-7">
                     <div className="font-medium text-lg">Sort by: </div>
-                
-                <div>
-                    <div className="relative w-full lg:max-w-sm">
-                        <div className="flex flex-col bg-white rounded-lg pl-7 pr-7">
-                            <form method="post">
-                                <label>
-                                    <select value={value} name="selectedSort" onChange={handleChange}>
-                                        <option value="distance">Distance</option>
-                                        <option value="price">Price</option>
-                                        <option value="alphabetically">Alphabetically</option>
-                                    </select>
-                                </label>
-                            </form>
-                        </div>
-    
-                        </div>
-                    </div>
-                </div>
-                
 
+                    <div>
+                        <div className="relative w-full lg:max-w-sm">
+                            <div className="flex flex-col bg-white rounded-lg pl-7 pr-7">
+                                <form method="post">
+                                    <label>
+                                        <select value={value} name="selectedSort" onChange={handleChange}>
+                                            <option value="distance">Distance</option>
+                                            <option value="price">Price</option>
+                                            <option value="alphabetically">Alphabetically</option>
+                                        </select>
+                                    </label>
+                                </form>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
+
+
 
                 <div className="">
-                        <div className={classNames("rentSpot")}>
-                            <ScrollBox items={items} onSelect={(selected: Place, index: number) => {
-                                setSelected(selected);
+                    <div className={classNames("rentSpot")}>
+                        <ScrollBox items={items} onSelect={(selected: Place, index: number) => {
+                            setSelected(selected);
 
-                            }}></ScrollBox>
-                        </div>
+                        }}></ScrollBox>
+                    </div>
                 </div>
             </>
         );
