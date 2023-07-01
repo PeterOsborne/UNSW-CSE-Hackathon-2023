@@ -1,4 +1,4 @@
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api"
+import { GoogleMap, useLoadScript, Marker, StreetViewService } from "@react-google-maps/api"
 import { useMemo } from "react";
 import React, { useState } from 'react';
 import SearchBar from '../../Components/SearchBar/index'
@@ -18,6 +18,18 @@ interface Place {
     placeName: string;
 }
 
+
+var mapOptions = {
+    zoom: 15,
+    center: { lat: -33.916758, lng: 151.225967 },
+    mapContainerClassName: 'actual_maps',
+    mapTypeControlOptions: {
+        mapTypeIds: ['satellite', 'roadmap'], // Enable satellite and roadmap options
+    },
+    mapTypeId: 'satellite', // Set the default map type to satellite
+
+};
+
 const Mapback = () => {
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: 'AIzaSyC5Uuuwshx9rQwt9Mn7mFbmjTfg7iehvcY',
@@ -25,20 +37,23 @@ const Mapback = () => {
 
     if (!isLoaded) return <div>loading...</div>;
 
-    const mapOptions = {
-        zoom: 15,
-        center: { lat: -33.916758, lng: 151.225967 },
-        mapContainerClassName: 'actual_maps',
-        mapTypeControlOptions: {
-            mapTypeIds: ['satellite', 'roadmap'], // Enable satellite and roadmap options
-        },
-        mapTypeId: 'satellite', // Set the default map type to satellite
-    };
+
 
     return (
         <>
             <div className="background">
-                <GoogleMap {...mapOptions} />
+                <GoogleMap {...mapOptions}
+                    options={{
+                        zoomControl: true,
+                        streetViewControl: false,
+                        mapTypeControl: false,
+                        fullscreenControl: false
+                    }}
+                >
+                    <Marker position={mapOptions.center} />
+                </GoogleMap>
+
+
             </div>
         </>
     );
@@ -59,8 +74,6 @@ const LookingToBox = (props: PropsLookingToBox) => {
     const [selected, setSelected] = useState(items[0]);
 
     if (props.option == 0) {
-
-
         return (
             <>
                 <div className={classNames("rentSpot")}>
