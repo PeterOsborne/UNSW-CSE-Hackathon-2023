@@ -1,20 +1,32 @@
 .home-container {
-    width: 20%;
+    width: 40%;
 
     display: flex;
 
+
     .menu {
-        margin: 40px;
+        background-image: linear-gradient(to right, rgb(255, 255, 255) 75%, rgba(255, 255, 255, 0) 80%);
+        z-index: 1;
+        height: 100%;
+        width: 800px;
+
+        left: 0;
+        top: 0;
         padding: 20px;
         flex-direction: column;
 
 
-        background-color: rgba(0, 0, 0, 0.2);
-        border-radius: 5px;
-        // -webkit-backdrop-filter: blur(5px);
-        backdrop-filter: blur(2px);
-        // background: linear-gradient(45deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.5) 60%);
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        // background-color: rgba(0, 0, 0, 0.2);
+        // border-radius: 5px;
+        // // -webkit-backdrop-filter: blur(5px);
+        // backdrop-filter: blur(2px);
+        // // background: linear-gradient(45deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.5) 60%);
+        // box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+
+
+        .rentSpot {
+            height: 10px;
+        }
     }
 
 
@@ -23,11 +35,13 @@
 }
 
 .map-container {
+    z-index: 0;
+
     .background {
         position: fixed;
         top: -10%;
-        left: 35%;
-        width: 65%;
+        left: 30%;
+        width: 70%;
         height: 130%;
         // z-index: 0;
     }

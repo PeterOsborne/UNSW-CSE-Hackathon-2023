@@ -1,12 +1,21 @@
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api"
 import { useMemo } from "react";
-import { useState } from 'react';
+import React, { useState } from 'react';
 import SearchBar from '../../Components/SearchBar/index'
 import { ButtonGroup, ToggleButtonGroup, ToggleButton, Button } from 'react-bootstrap';
-
+import classNames from 'classnames';
 
 import './style.scss';
 import ScrollBox from '../../Components/ScrollBox';
+interface PropsLookingToBox {
+    option: number //if 0 then rent, if 1 then offer
+}
+
+interface Place {
+    placeDistance: number;
+    placePriceRate: number;
+    placeName: string;
+}
 
 const Mapback = () => {
     const { isLoaded } = useLoadScript({
@@ -34,18 +43,31 @@ const Mapback = () => {
     );
 };
 
-interface PropsLookingToBox {
-    option: number //if 0 then rent, if 1 then offer
-}
+
 
 const LookingToBox = (props: PropsLookingToBox) => {
+
+
+    const [items, setItems] = useState<Place[]>([
+        { placeDistance: 8, placePriceRate: 3, placeName: 'place 1' },
+        { placeDistance: 6, placePriceRate: 2, placeName: 'place 2' },
+        { placeDistance: 12, placePriceRate: 1, placeName: 'place 3' },
+        { placeDistance: 12, placePriceRate: 1, placeName: 'place 4' }
+    ]);
+
+    const [selected, setSelected] = useState(items[0]);
+
     if (props.option == 0) {
+
+
         return (
             <>
-                <p>
-                    this is for rent a spot
-                </p>
-                <ScrollBox />
+                <div className={classNames("rentSpot")}>
+                    <ScrollBox items={items} onSelect={(selected: Place, index: number) => {
+                        setSelected(selected);
+                    }}></ScrollBox>
+                </div>
+
             </>
         );
     }

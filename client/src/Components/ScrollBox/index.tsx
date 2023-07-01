@@ -1,32 +1,41 @@
 import './index.scss';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import classNames from 'classnames';
 
 interface Place {
   placeDistance: number;
   placePriceRate: number;
   placeName: string;
 }
+interface Props {
+  items: Place[],
+  onSelect: (selected: Place, index: number) => void
+}
 
-const ScrollBox = () => {
-  const [items, setItems] = useState<Place[]>([
-    { placeDistance: 8, placePriceRate: 3, placeName: 'place 1' },
-    { placeDistance: 6, placePriceRate: 2, placeName: 'place 2' },
-    { placeDistance: 12, placePriceRate: 1, placeName: 'place 3' },
-    { placeDistance: 12, placePriceRate: 1, placeName: 'place 4' }
-  ]);
 
-  const addItem = () => {
-    const newItem = prompt('Enter an item:');
-    if (newItem) {
-      setItems([...items, { placeDistance: 0, placePriceRate: 0, placeName: newItem }]);
-    }
-  };
 
-  const removeItem = (index: number) => {
-    const updatedItems = [...items];
-    updatedItems.splice(index, 1);
-    setItems(updatedItems);
-  };
+const ScrollBox = (props: Props) => {
+  const [selected, setSelected] = useState(0);
+
+  useEffect(() => {
+
+    props.onSelect(props.items[selected], selected)
+    console.log("i hate this")
+  }, [selected])
+
+
+  // const addItem = () => {
+  //   const newItem = prompt('Enter an item:');
+  //   if (newItem) {
+  //     setItems([...items, { placeDistance: 0, placePriceRate: 0, placeName: newItem }]);
+  //   }
+  // };
+
+  // const removeItem = (index: number) => {
+  //   const updatedItems = [...items];
+  //   updatedItems.splice(index, 1);
+  //   setItems(updatedItems);
+  // };
 
   return (
     <div className="h-80 w-80">
@@ -35,9 +44,13 @@ const ScrollBox = () => {
       </div>
       <div className="overflow-y-scroll">
         <ul className="pl-2 pr-2"> {/* Padding of 2 around all the boxes */}
-          {items.map((item, index) => (
-            <li key={index}>
-              <div className="pt-2">
+
+          {props.items.map((item, index) => (
+            <li key={index} onClick={() => {
+
+              setSelected(index)
+            }}>
+              <div className={classNames("pt-2", index === selected && "selected")} >
                 <div className="border-2 border-slate-600 rounded-md bg-slate-200">
                   <div>
                     <strong>placeName:</strong> {item.placeName}
@@ -48,7 +61,7 @@ const ScrollBox = () => {
                   <div>
                     <strong>placePriceRate:</strong> {item.placePriceRate}
                   </div>
-                  <button onClick={() => removeItem(index)}>Remove</button>
+
                 </div>
               </div>
             </li>
