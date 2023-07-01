@@ -40,7 +40,7 @@ export const NavBar = () => {
 
                             <div className='p-2'>
                                 <div className='logo-container bg-white rounded-lg shadow-md' >
-                                    <img className='' src={Logo} />
+                                    <img className='justify-center' src={Logo} />
                                     <h1>Karp</h1>
                                 </div>
                             </div>
