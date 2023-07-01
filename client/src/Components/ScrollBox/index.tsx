@@ -10,7 +10,9 @@ const ScrollBox = () => {
 
     return (
         <div>
-
+            <div class="overflow-y-scroll">
+                
+            </div> 
         </div>
     )
 
