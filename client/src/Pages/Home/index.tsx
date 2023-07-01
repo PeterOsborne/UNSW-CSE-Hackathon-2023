@@ -83,7 +83,7 @@ const LookingToBox = (props: PropsLookingToBox) => {
 
     if (props.option == 0) {
         return (
-            <div className="h-100">
+            <div className="">
                 <div className={classNames("rentSpot")}>
                     <ScrollBox items={items} onSelect={(selected: Place, index: number) => {
                         setSelected(selected);
@@ -107,19 +107,21 @@ export default function Home() {
     return (
         <div className='home-container'>
             <div className='menu'>
-                <p>
+                <p className="text-3xl font-medium p-2">
                     Looking to:
                 </p>
-                <ToggleButtonGroup type="radio" name="options" defaultValue={0} onChange={(e) => setMenuOption(e)}>
-                    <ToggleButton id="rent-spot" variant="dark" value={0}>
-                        Rent a Spot
-                    </ToggleButton>
-                    <ToggleButton id="offer-spots" variant="dark" value={1}>
-                        Offer a spot
-                    </ToggleButton>
-                </ToggleButtonGroup>
+                <div className="p-2">
+                    <ToggleButtonGroup type="radio" name="options" defaultValue={0} onChange={(e) => setMenuOption(e)}>
+                        <ToggleButton id="rent-spot" variant="dark" value={0}>
+                            Rent a Spot
+                        </ToggleButton>
+                        <ToggleButton id="offer-spots" variant="dark" value={1}>
+                            Offer a spot
+                        </ToggleButton>
+                    </ToggleButtonGroup>
+                </div>
+                    <LookingToBox option={menuOption} />
 
-                <LookingToBox option={menuOption} />
             </div>
 
 
