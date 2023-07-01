@@ -19,7 +19,7 @@ const ListSpotWindow = () => {
         <div className="flex">Lease a parking spot</div>
       </div>
 
-      <div className="grid-cols-2">
+      <div className="grid grid-cols-2">
         <div className="">Parking Type</div>
         <div className=""><ParkingTypeDropDown /></div>
         <div className="">Spot Availability</div>
