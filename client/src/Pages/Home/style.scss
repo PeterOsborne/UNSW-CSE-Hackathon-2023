@@ -1,11 +1,12 @@
 .home-container {
 
     display: flex;
+    flex-direction: column;
     height: 100%;
     background-color: whitesmoke;
 
-    .map-container{
-        .background{
+    .map-container {
+        .background {
             background-color: lightgreen;
             position: fixed;
             top: 0;

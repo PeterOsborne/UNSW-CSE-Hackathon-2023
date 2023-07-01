@@ -1,5 +1,6 @@
-import React from 'react';
-import {useState} from 'react';
+import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api"
+import { useMemo } from "react";
+import { useState } from 'react';
 import SearchBar from '../../Components/SearchBar/index'
 import { ButtonGroup, ToggleButtonGroup, ToggleButton, Button } from 'react-bootstrap';
 
@@ -9,11 +10,16 @@ import ScrollBox from '../../Components/ScrollBox';
 
 const Mapback = () => {
     return (
-        <div className="background">
-            {
-                <p> This is the map!</p>
-            }
-        </div>
+        <>
+            <div className="background">
+                {
+                    <div className='map-component-container'>
+                        <div>yoooo</div>
+                        <GoogleMap zoom={10} center={{ lat: 44, lng: -80 }} mapContainerClassName='map-container'></GoogleMap>
+                    </div>
+                }
+            </div>
+        </>
     );
 };
 
@@ -24,33 +30,36 @@ interface PropsLookingToBox {
 const LookingToBox = (props: PropsLookingToBox) => {
     if (props.option == 0) {
         return (
-            <p>
-                this is for rent a spot
-            </p>
+            <>
+                <p>
+                    this is for rent a spot
+                </p>
+                <ScrollBox/>
+            </>
         );
     } else {
-        
+
     }
     return (
-        <p> 
+        <p>
             This is for offering a spot
         </p>
     );
 };
 
-
-
 export default function Home() {
     const [menuOption, setMenuOption] = useState(0);
 
+    const { isLoaded } = useLoadScript({ googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!, });
+    if (!isLoaded) return <div>loading...</div>
 
     return (
         <div className='home-container'>
-            <div className='menu'> 
+            <div className='menu'>
                 <p>
                     Looking to:
                 </p>
-                <ToggleButtonGroup type="radio"  name="options" defaultValue={0} onChange={(e) => setMenuOption(e)}>
+                <ToggleButtonGroup type="radio" name="options" defaultValue={0} onChange={(e) => setMenuOption(e)}>
                     <ToggleButton id="rent-spot" variant="dark" value={0}>
                         Rent a Spot
                     </ToggleButton>
@@ -61,13 +70,14 @@ export default function Home() {
             </div>
 
             <div>
-                <LookingToBox option={menuOption}/> 
+                <LookingToBox option={menuOption} />
             </div>
-            
+
 
             <p>This will be signin button</p>
             <div className='map-container'>
                 <p> This is the map!</p>
+                <Mapback />
             </div>
         </div>
     )
