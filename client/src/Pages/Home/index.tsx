@@ -9,6 +9,7 @@ import { MarkerF, InfoWindow } from '@react-google-maps/api'
 import './style.scss';
 import ScrollBox from '../../Components/ScrollBox';
 import ListSpotWindow from "../../Components/ListSpotWindow";
+import { NavBar } from "../../Components/NavBar";
 interface PropsLookingToBox {
     option: number //if 0 then rent, if 1 then offer
 }
@@ -123,42 +124,48 @@ const LookingToBox = (props: PropsLookingToBox) => {
     function handleChange(e: any) {
         setValue(e.target.value);
         if (value === "distance") {
-          items.sort((place1: Place, place2: Place) =>  place1.placeDistance - place2.placeDistance);
+            items.sort((place1: Place, place2: Place) => place1.placeDistance - place2.placeDistance);
         } else if (value === "price") {
-          items.sort((place1: Place, place2: Place) =>  place1.placePriceRate - place2.placePriceRate);
+            items.sort((place1: Place, place2: Place) => place1.placePriceRate - place2.placePriceRate);
         } else if (value === "alphabetically") {
-          items.sort((place1: Place, place2: Place) => {
-              if (place1.placeName < place2.placeName) {
-                  return -1;
-              }
-              if (place1.placeName > place2.placeName) {
-                  return 1;
-              }
-              return 0;
-          });    
+            items.sort((place1: Place, place2: Place) => {
+                if (place1.placeName < place2.placeName) {
+                    return -1;
+                }
+                if (place1.placeName > place2.placeName) {
+                    return 1;
+                }
+                return 0;
+            });
         }
-      }
+    }
 
     if (props.option == 0) {
         return (
             <>
-                <div>
-                    <div className="relative w-full lg:max-w-sm">
-                        <div className="flex flex-col bg-white rounded-lg pl-7 pr-7">
-                        <form method="post">
-                                <label>
-                                <select value={value} name="selectedSort" onChange={handleChange}>
-                                    <option value="distance">Distance</option>
-                                    <option value="price">Price</option>
-                                    <option value="alphabetically">Alphabetically</option>
-                                </select>
-                                </label>
-                            </form>
-                        </div>
-    
+                <div className="flex flex-col bg-white rounded-lg pl-7 pr-7">
+                    <div className="font-medium text-lg">Sort by: </div>
+
+                    <div>
+                        <div className="relative w-full lg:max-w-sm">
+                            <div className="flex flex-col bg-white rounded-lg pl-7 pr-7">
+                                <form method="post">
+                                    <label>
+                                        <select value={value} name="selectedSort" onChange={handleChange}>
+                                            <option value="distance">Distance</option>
+                                            <option value="price">Price</option>
+                                            <option value="alphabetically">Alphabetically</option>
+                                        </select>
+                                    </label>
+                                </form>
+                            </div>
+
                         </div>
                     </div>
-                
+                </div>
+
+
+
                 <div className="">
                     <div className={classNames("rentSpot")}>
                         <ScrollBox items={items} onSelect={(selected: Place, index: number) => {
@@ -166,7 +173,6 @@ const LookingToBox = (props: PropsLookingToBox) => {
 
                         }}></ScrollBox>
                     </div>
-
                 </div>
             </>
         );
@@ -195,6 +201,7 @@ export default function Home() {
                     // setMarkers(markers => [...markers, place])
                 }} />
             </div>
+            <NavBar />
 
             <div className='menu'>
 

@@ -45,9 +45,6 @@ const ScrollBox = (props: Props) => {
 
   return (
     <div className="scrollbar">
-      <div className="flex flex-col bg-white rounded-lg pl-7 pr-7">
-        <div className="font-medium text-lg">Sort by: </div>
-      </div>
       <div className="">
         <ul className=""> {/* overflow-y-scroll */}
 
