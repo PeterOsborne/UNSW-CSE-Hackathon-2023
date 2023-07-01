@@ -12,6 +12,7 @@ import ListSpotWindow from "../../Components/ListSpotWindow";
 import { NavBar } from "../../Components/NavBar";
 import { Console } from "console";
 import { LookingToBox } from "../../Components/LookingToBox";
+import { getPlaceList } from "../../Backend/places";
 interface PropsLookingToBox {
     option: number //if 0 then rent, if 1 then offer
 }
@@ -50,9 +51,12 @@ var mapOptions = {
 interface MapProps {
     markers: marktype[],
     clicked: (place: marktype) => void,
+    mapRef: (GoogleMap | null),
+    setMapRef: (map: GoogleMap | null) => void;
+
 }
 const Mapback = (props: MapProps) => {
-    const [mapRef, setMapRef] = useState<GoogleMap | null>(null);
+
 
 
     const { isLoaded } = useLoadScript({
@@ -63,15 +67,16 @@ const Mapback = (props: MapProps) => {
 
 
 
+
     const handleMarkerClick = (id: number, lat: number, lng: number) => {
-        mapRef?.panTo({ lat, lng });
+        props.mapRef?.panTo({ lat, lng });
 
         // setInfoWindowData({ id, address });
         // setIsOpen(true);
     };
 
     const onMapLoad = (map: any) => {
-        setMapRef(map);
+        props.setMapRef(map);
         const bounds = new google.maps.LatLngBounds();
 
         if (props.markers && props.markers.length > 0) {
@@ -138,16 +143,16 @@ const Mapback = (props: MapProps) => {
 
 
 export default function Home() {
+    const [mapRef, setMapRef] = useState<GoogleMap | null>(null);
     const [menuOption, setMenuOption] = useState(0);
 
     //have made new spot
 
 
-    const [markers, setMarkers] = useState<marktype[]>([
-        { lat: -33.90255457456635, lng: 151.27199810053114, type: 0 },
-        { lat: -33.910691646771085, lng: 151.23017859948988, type: 0 },
-        { lat: -33.916758, lng: 151.225967, type: 0 }
-    ]);
+    const [markers, setMarkers] = useState<marktype[]>(getPlaceList().map((mark) => mark.marker)
+
+
+    );
 
 
 
@@ -156,11 +161,13 @@ export default function Home() {
             <div className='map-container'>
                 <Mapback markers={markers} clicked={function (place: marktype): void {
                     if (markers.length == 0 || markers[markers.length - 1].type === 0) {
-                        setMarkers(markers => [...markers, place])
+                        setMarkers(markers => [...markers, place]);
                     } else {
-                        setMarkers(markers => [...markers.slice(0, markers.length - 1), place])
+                        setMarkers(markers => [...markers.slice(0, markers.length - 1), place]);
                     }
 
+                }} mapRef={null} setMapRef={function (map: GoogleMap | null): void {
+                    setMapRef(map)
                 }} />
             </div>
             <NavBar />
@@ -180,7 +187,7 @@ export default function Home() {
                         </ToggleButton>
                     </ToggleButtonGroup>
                 </div>
-                <LookingToBox option={menuOption} haveMadeNewSpot={markers} />
+                <LookingToBox option={menuOption} haveMadeNewSpot={markers} mapref={mapRef} />
 
             </div>
         </div>
