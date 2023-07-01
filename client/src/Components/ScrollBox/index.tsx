@@ -38,7 +38,7 @@ const ScrollBox = (props: Props) => {
 
   return (
     <div className="scrollbar">
-      <div className="flex flex-col">
+      <div className="flex flex-col bg-white">
         <div>Sort by: </div>
       </div>
       <div className="">
@@ -49,22 +49,23 @@ const ScrollBox = (props: Props) => {
 
               setSelected(index)
             }}>
-              <div className={classNames("pt-2", "box-item-cont")} >
-                <div className={classNames("border-2 ", "box-item", index === selected && "selected")}>
-                  <div>
-                    <strong>placeName:</strong> {item.placeName}
+              <div className={classNames("p-1", "box-item-cont")} >
+                <div className={classNames("pl-6 pt-2 pb-2 pr-6", "box-item", index === selected && "selected")}>
+                  <div className="font-bold">
+                    {item.placeName}
                   </div>
                   <div>
-                    <strong>placeDistance:</strong> {item.placeDistance}
-                  </div>
-                  <div>
-                    <strong>placePriceRate:</strong> {item.placePriceRate}
+                    {item.placeDistance} km
                   </div>
 
+                  <div>
+                    {item.placePriceRate}
+                  </div>
                 </div>
               </div>
             </li>
           ))}
+
         </ul>
       </div>
     </div>
