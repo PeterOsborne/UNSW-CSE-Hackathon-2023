@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { Header } from "../Header/index";
+import { NavBar } from "../NavBar";
 
 interface Props {
     children: ReactNode;
@@ -7,9 +8,9 @@ interface Props {
 
 export default function Layout({ children }: Props) {
     return (
-        <div className="App px-2">
-            <Header />
+        <>
+
             {children}
-        </div>
+        </>
     );
 }
