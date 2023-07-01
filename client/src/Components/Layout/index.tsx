@@ -1,7 +1,13 @@
-import React from 'react';
+import { ReactNode } from "react";
 
-export default function LayoutTmemplate() {
+interface Props {
+    children: ReactNode;
+}
+
+export default function Layout({ children }: Props) {
     return (
-        <div>Sample Div</div>
-    )
+        <div className="App px-2">
+            {children}
+        </div>
+    );
 }
