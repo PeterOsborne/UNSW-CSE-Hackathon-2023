@@ -59,7 +59,7 @@ const ScrollBox = (props: Props) => {
                   </div>
 
                   <div>
-                    {item.placePriceRate}
+                    ${item.placePriceRate} per hour
                   </div>
                 </div>
               </div>
