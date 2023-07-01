@@ -61,6 +61,12 @@ const ListSpotWindow = (props: Props) => {
                             $ <input className="w-3/12 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="start_avail" type="text" placeholder="1.00"></input>/hour
                         </div>
                     </div>
+                    <div className="p-2 font-medium">Spot Address</div>
+                    <div className="p-2">
+                        <div>
+                            <input className="w-full shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="start_avail" type="text" placeholder="12 Walnut St, NSW 2222"></input>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div className="flex flex-col pt-2">
