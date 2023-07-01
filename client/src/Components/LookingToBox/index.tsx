@@ -5,10 +5,12 @@ import classNames from 'classnames';
 import React from "react";
 import SearchBar from "../SearchBar";
 
-
+import { getPlaceList } from "../../Backend/places"
+import { GoogleMap } from "@react-google-maps/api";
 interface PropsLookingToBox {
     option: number //if 0 then rent, if 1 then offer
     haveMadeNewSpot: marktype[]
+    mapref: GoogleMap | null
 }
 interface marktype {
     lat: number,
@@ -25,19 +27,9 @@ interface Place {
 
 export const LookingToBox = (props: PropsLookingToBox) => {
 
-    const [items, setItems] = useState<Place[]>([
-        // { placeDistance: 8, placePriceRate: 3, placeName: '10 Norton St, Kingsford NSW 2032', placeAvailability: '09:00 - 16:00' },
-        // { placeDistance: 6, placePriceRate: 2, placeName: '20 Milford St, Kingsford NSW 2032', placeAvailability: '09:00 - 16:00' },
-        // { placeDistance: 12, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00' },
-        // { placeDistance: 12, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00' },
-        // { placeDistance: 12, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00' },
-        // { placeDistance: 12, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00' },
-        // { placeDistance: 12, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00' },
-        // { placeDistance: 12, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00' },
-        // { placeDistance: 12, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00' },
-        // { placeDistance: 12, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00' },
-        // { placeDistance: 12, placePriceRate: 1, placeName: '15 Duke St, Kengiston NSW 2033', placeAvailability: '09:00 - 16:00' }
-    ]);
+    const [items, setItems] = useState<Place[]>(getPlaceList());
+
+
 
     const [selected, setSelected] = useState(items[0]);
 
@@ -60,6 +52,11 @@ export const LookingToBox = (props: PropsLookingToBox) => {
             });
         }
     }
+
+    const handelSelect = (selected: Place, index: number) => {
+        setSelected(selected);
+        props.mapref?.panTo({ lat: selected.marker.lat, lng: selected.marker.lng })
+    };
 
     if (props.option == 0) {
         return (
@@ -89,10 +86,7 @@ export const LookingToBox = (props: PropsLookingToBox) => {
 
                 <div className="">
                     <div className={classNames("rentSpot")}>
-                        <ScrollBox items={items} onSelect={(selected: Place, index: number) => {
-                            setSelected(selected);
-
-                        }}></ScrollBox>
+                        <ScrollBox items={items} onSelect={handelSelect}></ScrollBox>
                     </div>
                 </div>
             </>
