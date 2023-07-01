@@ -1,5 +1,5 @@
 import { GoogleMap, useLoadScript, Marker, StreetViewService } from "@react-google-maps/api"
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import React, { useState } from 'react';
 import SearchBar from '../../Components/SearchBar/index'
 import { ButtonGroup, ToggleButtonGroup, ToggleButton, Button } from 'react-bootstrap';
@@ -10,7 +10,7 @@ import './style.scss';
 import ScrollBox from '../../Components/ScrollBox';
 import ListSpotWindow from "../../Components/ListSpotWindow";
 import { NavBar } from "../../Components/NavBar";
-import { Console } from "console";
+//import { Console } from "console";
 import { LookingToBox } from "../../Components/LookingToBox";
 import { getPlaceList } from "../../Backend/places";
 interface PropsLookingToBox {
@@ -55,6 +55,8 @@ interface MapProps {
     setMapRef: (map: GoogleMap | null) => void;
 
 }
+
+
 const Mapback = (props: MapProps) => {
 
 
@@ -62,6 +64,8 @@ const Mapback = (props: MapProps) => {
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: 'AIzaSyC5Uuuwshx9rQwt9Mn7mFbmjTfg7iehvcY',
     });
+
+
 
     if (!isLoaded) return <div>loading...</div>;
 
@@ -149,11 +153,11 @@ export default function Home() {
     //have made new spot
 
 
-    const [markers, setMarkers] = useState<marktype[]>(getPlaceList().map((mark) => mark.marker)
+    const [markers, setMarkers] = useState<marktype[]>(getPlaceList().map((mark) => mark.marker));
 
-
-    );
-
+    useEffect(() => {
+        console.log("added")
+    }, markers);
 
 
     return (
