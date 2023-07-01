@@ -29,10 +29,13 @@ const ScrollBox = () => {
   };
 
   return (
-    <div>
-      <div className="overflow-y-scroll h-80 w-80">
+    <div className="h-80 w-80">
+      <div className="flex flex-col">
+        <div>Sort by: </div>
+      </div>
+      <div className="overflow-y-scroll">
         <p  className="text-blue-500">If tailwind works, this text should be blue</p>
-        <ul className="p-3"> // Padding of 2 around all the boxes
+        <ul className="pl-2 pr-2"> {/* Padding of 2 around all the boxes */}
           {items.map((item, index) => (
             <li key={index}>
               <div className="pt-2">
