@@ -9,13 +9,26 @@ import './style.scss';
 import ScrollBox from '../../Components/ScrollBox';
 
 const Mapback = () => {
-    const { isLoaded } = useLoadScript({ googleMapsApiKey: "AIzaSyC5Uuuwshx9rQwt9Mn7mFbmjTfg7iehvcY", });
-    if (!isLoaded) return <div>loading...</div>
+    const { isLoaded } = useLoadScript({
+        googleMapsApiKey: 'AIzaSyC5Uuuwshx9rQwt9Mn7mFbmjTfg7iehvcY',
+    });
+
+    if (!isLoaded) return <div>loading...</div>;
+
+    const mapOptions = {
+        zoom: 10,
+        center: { lat: 44, lng: -80 },
+        mapContainerClassName: 'actual_maps',
+        mapTypeControlOptions: {
+            mapTypeIds: ['satellite', 'roadmap'], // Enable satellite and roadmap options
+        },
+        mapTypeId: 'satellite', // Set the default map type to satellite
+    };
 
     return (
         <>
             <div className="background">
-                <GoogleMap zoom={10} center={{ lat: 44, lng: -80 }} mapContainerClassName='actual_maps'></GoogleMap>
+                <GoogleMap {...mapOptions} />
             </div>
         </>
     );
