@@ -143,23 +143,22 @@ const LookingToBox = (props: PropsLookingToBox) => {
     if (props.option == 0) {
         return (
             <>
-                <div className="flex flex-col bg-white rounded-lg pl-7 pr-7">
-                    <div className="font-medium text-lg">Sort by: </div>
+                <div className="flex flex-col bg-white rounded-lg pl-7 pr-7 pt-2 pb-2">
+                    <div className="flex justify-end">
+                        <div className="flex font-medium text-lg pr-7">
+                            Sort by: 
+                        </div>
 
-                    <div>
-                        <div className="relative w-full lg:max-w-sm">
-                            <div className="flex flex-col bg-white rounded-lg pl-7 pr-7">
-                                <form method="post">
-                                    <label>
-                                        <select value={value} name="selectedSort" onChange={handleChange}>
-                                            <option value="distance">Distance</option>
-                                            <option value="price">Price</option>
-                                            <option value="alphabetically">Alphabetically</option>
-                                        </select>
-                                    </label>
-                                </form>
-                            </div>
-
+                        <div className="flex justify-end p-1">
+                            <form method="post">
+                                <label>
+                                    <select value={value} name="selectedSort" onChange={handleChange} className="font-medium">
+                                        <option value="distance">Distance</option>
+                                        <option value="price">Price</option>
+                                        <option value="alphabetically">Alphabetically</option>
+                                    </select>
+                                </label>
+                            </form>
                         </div>
                     </div>
                 </div>
