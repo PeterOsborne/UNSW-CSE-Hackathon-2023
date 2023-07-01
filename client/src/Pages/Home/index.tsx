@@ -174,10 +174,11 @@ export default function Home() {
             <NavBar />
 
             <div className='menu'>
-
-                <p className="text-3xl font-medium p-2">
-                    Looking to:
-                </p>
+                <div className=""> {/* flex flex-col content-center items-center */}
+                    <p className="flex text-3xl font-medium p-2 justify-center"> {/* bg-white rounded-md w-4/12  */}
+                        Looking to:
+                    </p>
+                </div>
                 <div className="p-2">
                     <ToggleButtonGroup type="radio" name="options" defaultValue={0} onChange={(e) => setMenuOption(e)}>
                         <ToggleButton id="rent-spot" variant="dark" value={0}>
