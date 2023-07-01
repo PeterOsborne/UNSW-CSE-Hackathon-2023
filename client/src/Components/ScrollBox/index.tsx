@@ -30,21 +30,25 @@ const ScrollBox = () => {
 
   return (
     <div>
-      <div className="overflow-y-scroll h-10">
+      <div className="overflow-y-scroll h-80 w-80">
         <p  className="text-blue-500">If tailwind works, this text should be blue</p>
-        <ul>
+        <ul className="p-3"> // Padding of 2 around all the boxes
           {items.map((item, index) => (
             <li key={index}>
-              <div>
-                <strong>placeName:</strong> {item.placeName}
+              <div className="pt-2">
+                <div className="border-2 border-indigo-600 rounded-sm">
+                  <div>
+                    <strong>placeName:</strong> {item.placeName}
+                  </div>
+                  <div>
+                    <strong>placeDistance:</strong> {item.placeDistance}
+                  </div>
+                  <div>
+                    <strong>placePriceRate:</strong> {item.placePriceRate}
+                  </div>
+                  <button onClick={() => removeItem(index)}>Remove</button>
+                </div>
               </div>
-              <div>
-                <strong>placeDistance:</strong> {item.placeDistance}
-              </div>
-              <div>
-                <strong>placePriceRate:</strong> {item.placePriceRate}
-              </div>
-              <button onClick={() => removeItem(index)}>Remove</button>
             </li>
           ))}
         </ul>
