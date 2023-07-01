@@ -5,7 +5,7 @@ interface Props {
 
 }
 
-const Counter = () => {
+const SearchBar = () => {
 
     const [count, setCount] = useState(0);
 
@@ -20,4 +20,4 @@ const Counter = () => {
 
 }
 
-export default Counter;
+export default SearchBar;
