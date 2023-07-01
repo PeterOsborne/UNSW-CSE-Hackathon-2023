@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { Header } from "../Header/index";
 
 interface Props {
     children: ReactNode;
@@ -7,6 +8,7 @@ interface Props {
 export default function Layout({ children }: Props) {
     return (
         <div className="App px-2">
+            <Header />
             {children}
         </div>
     );
