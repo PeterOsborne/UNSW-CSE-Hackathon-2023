@@ -2,12 +2,18 @@ import './index.scss';
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
+interface marktype {
+  lat: number,
+  lng: number
+}
 interface Place {
   placeDistance: number;
   placePriceRate: number;
   placeName: string;
   placeAvailability: string;
+  marker: marktype;
 }
+
 interface Props {
   items: Place[],
   onSelect: (selected: Place, index: number) => void
