@@ -139,7 +139,12 @@ export default function Home() {
         <div className='home-container'>
             <div className='map-container'>
                 <Mapback markers={markers} clicked={function (place: marktype): void {
-                    setMarkers(markers => [...markers, place])
+                    if (markers.length == 0 || markers[markers.length - 1].type === 0) {
+                        setMarkers(markers => [...markers, place])
+                    } else {
+                        setMarkers(markers => [...markers.slice(0, markers.length - 1), place])
+                    }
+
                 }} />
             </div>
             <NavBar />
