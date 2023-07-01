@@ -39,11 +39,11 @@ const ScrollBox = (props: Props) => {
 
   return (
     <div className="scrollbar">
-      <div className="flex flex-col bg-white">
-        <div>Sort by: </div>
+      <div className="flex flex-col bg-white rounded-lg pl-7 pr-7">
+        <div className="font-medium text-lg">Sort by: </div>
       </div>
       <div className="">
-        <ul className=""> {/* Padding of 2 around all the boxes */}
+        <ul className=""> {/* overflow-y-scroll */}
 
           {props.items.map((item, index) => (
             <li key={index} onClick={() => {
