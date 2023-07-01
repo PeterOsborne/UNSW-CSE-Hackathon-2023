@@ -44,29 +44,6 @@ const LookingToBox = (props: PropsLookingToBox) => {
     );
 };
 
-interface PropsLookingToBox {
-    option: number //if 0 then rent, if 1 then offer
-}
-
-const LookingToBox = (props: PropsLookingToBox) => {
-    if (props.option == 0) {
-        return (
-            <p>
-                this is for rent a spot
-            </p>
-        );
-    } else {
-
-    }
-    return (
-        <p>
-            This is for offering a spot
-        </p>
-    );
-};
-
-
-
 export default function Home() {
     const { isLoaded } = useLoadScript({ googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!, });
     if (!isLoaded) return <div>loading...</div>
