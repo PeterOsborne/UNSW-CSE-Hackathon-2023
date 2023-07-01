@@ -3,6 +3,7 @@ import './index.scss';
 import ParkingTypeDropDown from '../ParkingTypeDropDown';
 // import { getData, setData } from '../../Backend/dataStore'
 import { createPlace } from '../../Backend/places'
+import { Marker } from 'google-maps-react';
 
 /* 
 This window is where sellers will put their spots up for renting
@@ -22,6 +23,7 @@ interface Place {
 }
 interface Props {
     markers: marktype[];
+    changelastmarker: () => void;
 }
 
 const UNSW: marktype = {
@@ -91,9 +93,14 @@ const ListSpotWindow = (props: Props) => {
             marker: currentMarker,
         }
 
-
         createPlace(newPlace);
-        currentMarker.type = 0;
+
+        props.changelastmarker()
+        setName('');
+        setPrice('');
+        setAvailStart('');
+        setAvailEnd('');
+
     }
 
     let numOfMarkers = props.markers.length;
