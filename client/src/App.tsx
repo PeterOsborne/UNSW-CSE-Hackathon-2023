@@ -1,12 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
 import { createBrowserRouter, BrowserRouter, Routes, Route, Link, NavLink, createRoutesFromElements, RouterProvider } from 'react-router-dom';
 import './App.css';
+
+import Layout from "./Components/Layout/index"
+import Home from "./Pages/Home"
+import About from "./Pages/About"
+import Contact from "./Pages/Contact"
+
 
 function App() {
   return (
     <div className="App">
-
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </Layout>
     </div>
   );
 }
