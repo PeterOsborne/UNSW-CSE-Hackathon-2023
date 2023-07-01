@@ -18,6 +18,7 @@ interface Place {
     placePriceRate: number;
     placeName: string;
     placeAvailability: string;
+    marker: marktype;
 }
 
 
