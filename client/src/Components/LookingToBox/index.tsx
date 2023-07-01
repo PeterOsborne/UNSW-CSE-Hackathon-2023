@@ -3,6 +3,8 @@ import ScrollBox from "../ScrollBox";
 import ListSpotWindow from "../ListSpotWindow";
 import classNames from 'classnames';
 import React from "react";
+import SearchBar from "../SearchBar";
+
 import { getPlaceList } from "../../Backend/places"
 import { GoogleMap } from "@react-google-maps/api";
 interface PropsLookingToBox {
@@ -61,6 +63,7 @@ export const LookingToBox = (props: PropsLookingToBox) => {
             <>
                 <div className="flex flex-col bg-white rounded-lg pl-7 pr-7 pt-2 pb-2">
                     <div className="flex justify-end">
+                        <SearchBar />
                         <div className="flex font-medium text-lg pr-7">
                             Sort by:
                         </div>

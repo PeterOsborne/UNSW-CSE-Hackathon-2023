@@ -5,29 +5,29 @@ interface Props {
 
 }
 
-const SearchBar: React.FC = () => {
+const SearchBar = () => {
     const [searchTerm, setSearchTerm] = useState('');
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(event.target.value);
+        // Call the search function here, passing the updated search term
+        performSearch(event.target.value);
     };
 
-    const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        // Handle the form submission, e.g., perform search
-        console.log('Search term:', searchTerm);
+    const performSearch = (term: string) => {
+        // Implement your search logic here
+
     };
 
     return (
-        <form onSubmit={handleFormSubmit}>
+        <div className="flex font-medium text-lg pr-7">
             <input
                 type="text"
                 value={searchTerm}
                 onChange={handleInputChange}
-                placeholder="Enter your search term"
+                placeholder="Search for a place"
             />
-            <button type="submit">Search</button>
-        </form>
+        </div>
     );
 }
 
