@@ -1,15 +1,16 @@
 import { getData, setData } from './dataStore'
 
-interface Data {
+export interface Data {
     places: Place[];
 }
 
-interface marktype {
+export interface marktype {
     lat: number,
-    lng: number
+    lng: number,
+    type: number
 }
 
-interface Place {
+export interface Place {
     placeDistance: number;
     placePriceRate: number;
     placeName: string;
@@ -17,13 +18,15 @@ interface Place {
     marker: marktype;
 }
 
+
 export function createPlace(newPlace: Place) {
     let data: Data = getData();
     data.places.push(newPlace);
     setData(data);
-}   
+}
 
 export function getPlaceList(): Place[] {
     let data: Data = getData();
     return data.places;
 }
+
