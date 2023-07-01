@@ -9,15 +9,13 @@ import './style.scss';
 import ScrollBox from '../../Components/ScrollBox';
 
 const Mapback = () => {
+    const { isLoaded } = useLoadScript({ googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!, });
+    if (!isLoaded) return <div>loading...</div>
+
     return (
         <>
             <div className="background">
-                {
-                    <div className='map-component-container'>
-                        <div>yoooo</div>
-                        <GoogleMap zoom={10} center={{ lat: 44, lng: -80 }} mapContainerClassName='map-container'></GoogleMap>
-                    </div>
-                }
+                <GoogleMap zoom={10} center={{ lat: 44, lng: -80 }} mapContainerClassName='actual_maps'></GoogleMap>
             </div>
         </>
     );
@@ -37,9 +35,7 @@ const LookingToBox = (props: PropsLookingToBox) => {
                 <ScrollBox/>
             </>
         );
-    } else {
-
-    }
+    } 
     return (
         <p>
             This is for offering a spot
@@ -50,8 +46,6 @@ const LookingToBox = (props: PropsLookingToBox) => {
 export default function Home() {
     const [menuOption, setMenuOption] = useState(0);
 
-    const { isLoaded } = useLoadScript({ googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!, });
-    if (!isLoaded) return <div>loading...</div>
 
     return (
         <div className='home-container'>
@@ -67,11 +61,11 @@ export default function Home() {
                         Offer a spot
                     </ToggleButton>
                 </ToggleButtonGroup>
-            </div>
 
-            <div>
                 <LookingToBox option={menuOption} />
             </div>
+
+      
 
 
             <p>This will be signin button</p>
