@@ -31,11 +31,12 @@ const ScrollBox = () => {
   return (
     <div>
       <div className="overflow-y-scroll h-10">
+        <p  className="text-blue-500">If tailwind works, this text should be blue</p>
         <ul>
           {items.map((item, index) => (
             <li key={index}>
               <div>
-                <strong className="text-blue-500">placeName:</strong> {item.placeName}
+                <strong>placeName:</strong> {item.placeName}
               </div>
               <div>
                 <strong>placeDistance:</strong> {item.placeDistance}
