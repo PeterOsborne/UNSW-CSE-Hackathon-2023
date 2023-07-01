@@ -24,9 +24,12 @@ interface PropsLookingToBox {
 const LookingToBox = (props: PropsLookingToBox) => {
     if (props.option == 0) {
         return (
-            <p>
-                this is for rent a spot
-            </p>
+            <>
+                <p>
+                    this is for rent a spot
+                </p>
+                <ScrollBox/>
+            </>
         );
     } else {
         
