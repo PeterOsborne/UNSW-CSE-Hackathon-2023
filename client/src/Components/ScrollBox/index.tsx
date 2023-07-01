@@ -6,6 +6,7 @@ interface Place {
   placeDistance: number;
   placePriceRate: number;
   placeName: string;
+  placeAvailability: string;
 }
 interface Props {
   items: Place[],
@@ -57,9 +58,11 @@ const ScrollBox = (props: Props) => {
                   <div>
                     {item.placeDistance} km
                   </div>
-
                   <div>
-                    ${item.placePriceRate} per hour
+                    ${item.placePriceRate}/hour
+                  </div>
+                  <div>
+                    Available: {item.placeAvailability}
                   </div>
                 </div>
               </div>
