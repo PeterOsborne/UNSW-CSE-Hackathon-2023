@@ -3,21 +3,14 @@ import { useMemo } from "react";
 import React, { useState } from 'react';
 import SearchBar from '../../Components/SearchBar/index'
 import { ButtonGroup, ToggleButtonGroup, ToggleButton, Button } from 'react-bootstrap';
-import classNames from 'classnames';
 
 import './style.scss';
 import ScrollBox from '../../Components/ScrollBox';
 import ListSpotWindow from "../../Components/ListSpotWindow";
-interface PropsLookingToBox {
-    option: number //if 0 then rent, if 1 then offer
-}
+import LookingToBox from "../../Components/LookingToBox/index"
 
-interface Place {
-    placeDistance: number;
-    placePriceRate: number;
-    placeName: string;
-    placeAvailability: string;
-}
+
+
 
 
 var mapOptions = {
@@ -62,36 +55,7 @@ const Mapback = () => {
 
 
 
-const LookingToBox = (props: PropsLookingToBox) => {
 
-
-    const [items, setItems] = useState<Place[]>([
-        { placeDistance: 8, placePriceRate: 3, placeName: '10 Norton St, Kingsford NSW 2032', placeAvailability: '09:00 - 16:00'},
-        { placeDistance: 6, placePriceRate: 2, placeName: '20 Milford St, Kingsford NSW 2032', placeAvailability: '09:00 - 16:00'},
-        { placeDistance: 12, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00'},
-        { placeDistance: 12, placePriceRate: 1, placeName: '15 Duke St, Kengiston NSW 2033', placeAvailability: '09:00 - 16:00'}
-    ]);
-
-    const [selected, setSelected] = useState(items[0]);
-
-    if (props.option == 0) {
-        return (
-            <>
-                <div className={classNames("rentSpot")}>
-                    <ScrollBox items={items} onSelect={(selected: Place, index: number) => {
-                        setSelected(selected);
-                    }}></ScrollBox>
-                </div>
-
-            </>
-        );
-    }
-    return (
-        <>
-            <ListSpotWindow></ListSpotWindow>
-        </>
-    );
-};
 
 export default function Home() {
     const [menuOption, setMenuOption] = useState(0);
