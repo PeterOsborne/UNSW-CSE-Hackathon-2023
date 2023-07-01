@@ -32,6 +32,8 @@ const UNSW: marktype = {
 
 const ListSpotWindow = (props: Props) => {
 
+
+    const [numerofTimes, setNumOfTimes] = useState(1)
     //This function takes in latitude and longitude of two location and returns the distance between them as the crow flies (in km)
     function calcCrow(lat1: number, lon1: number, lat2: number, lon2: number): number {
         var R = 6371; // km
@@ -119,12 +121,18 @@ const ListSpotWindow = (props: Props) => {
                     <div className="p-2"><ParkingTypeDropDown /></div>
                     <div className="p-2 font-medium">Spot Availability</div>
                     <div className="p-2 flex flex-col">
-                        <div>
-                            <input onChange={handleAvaliabilityStartChange} value={availStart} className="w-3/12 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="start_avail" type="text" placeholder="00:00"></input> - <input className="w-3/12 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="end_avail" type="text" placeholder="24:00" onChange={handleAvaliabilityEndChange} value={availEnd}></input>
-                        </div>
+                        {Array.from(Array(numerofTimes).keys()).map((item, index) => (
+                            <div>
+                                <input onChange={handleAvaliabilityStartChange} value={availStart} className="w-3/12 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="start_avail" type="text" placeholder="00:00"></input> - <input className="w-3/12 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="end_avail" type="text" placeholder="24:00" onChange={handleAvaliabilityEndChange} value={availEnd}></input>
+                            </div>
+                        ))}
+
                         <div className="flex justify-center p-3">
-                            <button className="flex text-sm w-8/12 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <button disabled={numerofTimes > 5} className={(numerofTimes > 5) ? "m-1 flex text-sm w-8/12 bg-blue-100  text-white font-bold py-2 px-4 rounded" : "m-1 flex text-sm w-8/12 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"} onClick={() => (setNumOfTimes(numerofTimes => numerofTimes + 1))}>
                                 + Add Availability
+                            </button>
+                            <button disabled={numerofTimes < 2} className={(numerofTimes < 2) ? "m-1 flex text-sm w-8/12 bg-blue-100  text-white font-bold py-2 px-4 rounded" : "m-1 flex text-sm w-8/12 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"} onClick={() => (setNumOfTimes(numerofTimes => numerofTimes - 1))}>
+                                - Remove Availability
                             </button>
                         </div>
                     </div>

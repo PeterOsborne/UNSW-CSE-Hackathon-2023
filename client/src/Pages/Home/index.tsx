@@ -155,9 +155,7 @@ export default function Home() {
 
     const [markers, setMarkers] = useState<marktype[]>(getPlaceList().map((mark) => mark.marker));
 
-    useEffect(() => {
-        console.log("added")
-    }, markers);
+
 
 
     return (
