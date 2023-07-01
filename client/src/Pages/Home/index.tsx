@@ -179,7 +179,7 @@ export default function Home() {
 
             <div className='menu'>
                 <div className=""> {/* flex flex-col content-center items-center */}
-                    <p className="flex text-3xl font-medium p-2 justify-center"> {/* bg-white rounded-md w-4/12  */}
+                    <p className="flex text-3xl font-medium p-2 justify-center drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.4)]"> {/* bg-white rounded-md w-4/12  */}
                         Looking to:
                     </p>
                 </div>
