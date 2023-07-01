@@ -73,7 +73,7 @@ export const LookingToBox = (props: PropsLookingToBox) => {
     if (props.option == 0) {
         return (
             <>
-                <div className="flex flex-col bg-white rounded-lg pl-7 pr-7 pt-2 pb-2">
+                <div className="flex flex-col bg-white rounded-lg pl-7 pr-7 pt-2 pb-2 drop-shadow-lg">
                     <div className="flex justify-end">
                         <SearchBar />
                         <div className="flex font-medium text-lg pr-7">

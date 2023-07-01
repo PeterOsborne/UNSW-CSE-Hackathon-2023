@@ -55,7 +55,7 @@ const ScrollBox = (props: Props) => {
               setSelected(index)
             }}>
               <div className={classNames("p-1", "box-item-cont")} >
-                <div className={classNames("pl-6 pt-2 pb-2 pr-6", "box-item", index === selected && "selected")}>
+                <div className={classNames("pl-6 pt-2 pb-2 pr-6", "box-item", "drop-shadow-xl", index === selected && "selected")}>
                   <div className="font-bold">
                     {item.placeName}
                   </div>
