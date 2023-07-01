@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './style.scss';
+import './index.scss';
 import ParkingTypeDropDown from '../ParkingTypeDropDown';
 
 /* 
