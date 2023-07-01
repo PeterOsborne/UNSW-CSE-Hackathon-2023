@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './style.scss';
+import './index.scss';
 
 /* 
 This window is where sellers will put their spots up for renting
@@ -9,7 +9,9 @@ interface Props {
 
 }
 
-const ListSpotWindow = (props: Props) => {
+const ListSpotWindow = () => {
+
+  return (
     <div className="bg-white border-4 rounded-lg">
 
       <div className="flex flex-col">
@@ -27,6 +29,7 @@ const ListSpotWindow = (props: Props) => {
         <div className="flex">Post parking spot!</div>
       </div>
     </div>
+  );
 };
 
 export default ListSpotWindow;

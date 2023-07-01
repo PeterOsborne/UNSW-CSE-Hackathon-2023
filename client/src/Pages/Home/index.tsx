@@ -7,6 +7,7 @@ import classNames from 'classnames';
 
 import './style.scss';
 import ScrollBox from '../../Components/ScrollBox';
+import ListSpotWindow from "../../Components/ListSpotWindow";
 interface PropsLookingToBox {
     option: number //if 0 then rent, if 1 then offer
 }
@@ -72,9 +73,9 @@ const LookingToBox = (props: PropsLookingToBox) => {
         );
     }
     return (
-        <p>
-            This is for offering a spot
-        </p>
+        <>
+            <ListSpotWindow></ListSpotWindow>
+        </>
     );
 };
 
