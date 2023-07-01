@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './style.scss';
+import './index.scss';
 import ParkingTypeDropDown from '../ParkingTypeDropDown';
 
 /* 
@@ -10,7 +10,9 @@ interface Props {
 
 }
 
-const ListSpotWindow = (props: Props) => {
+const ListSpotWindow = () => {
+
+  return (
     <div className="bg-white border-4 rounded-lg">
 
       <div className="flex flex-col">
@@ -19,7 +21,7 @@ const ListSpotWindow = (props: Props) => {
 
       <div className="grid-cols-2">
         <div className="">Parking Type</div>
-        <div className=""><ParkingTypeDropDown/></div>
+        <div className=""><ParkingTypeDropDown /></div>
         <div className="">Spot Availability</div>
         <div className="">(spotAvaialbiulty here)</div>
         <div className="">Spot Price</div>
@@ -30,6 +32,7 @@ const ListSpotWindow = (props: Props) => {
         <div className="flex">Post parking spot!</div>
       </div>
     </div>
+  );
 };
 
 export default ListSpotWindow;
