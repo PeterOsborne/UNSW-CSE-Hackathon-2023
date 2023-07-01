@@ -9,7 +9,7 @@ import './style.scss';
 import ScrollBox from '../../Components/ScrollBox';
 
 const Mapback = () => {
-    const { isLoaded } = useLoadScript({ googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!, });
+    const { isLoaded } = useLoadScript({ googleMapsApiKey: "AIzaSyC5Uuuwshx9rQwt9Mn7mFbmjTfg7iehvcY", });
     if (!isLoaded) return <div>loading...</div>
 
     return (
@@ -32,10 +32,10 @@ const LookingToBox = (props: PropsLookingToBox) => {
                 <p>
                     this is for rent a spot
                 </p>
-                <ScrollBox/>
+                <ScrollBox />
             </>
         );
-    } 
+    }
     return (
         <p>
             This is for offering a spot
@@ -65,7 +65,7 @@ export default function Home() {
                 <LookingToBox option={menuOption} />
             </div>
 
-      
+
 
 
             <p>This will be signin button</p>
