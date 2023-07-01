@@ -6,7 +6,7 @@ interface Props {
 
 const ScrollBox = () => {
 
-    //if shit do shit
+    //
 
     return (
         <div>
