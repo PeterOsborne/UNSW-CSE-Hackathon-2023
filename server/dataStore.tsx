@@ -24,6 +24,13 @@ let dataStore: Data = {
     spaces: []
 }
 
-const getdata = (): Data => dataStore;
+const getData = (): Data => dataStore;
 const setData = (data: Data) => dataStore = data;
 
+export {
+    getData,
+    setData,
+    Spots,
+    User, 
+    Data
+}
