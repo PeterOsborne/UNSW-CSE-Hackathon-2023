@@ -16,8 +16,8 @@ const Mapback = () => {
     if (!isLoaded) return <div>loading...</div>;
 
     const mapOptions = {
-        zoom: 10,
-        center: { lat: 44, lng: -80 },
+        zoom: 15,
+        center: { lat: -33.916758, lng: 151.225967 },
         mapContainerClassName: 'actual_maps',
         mapTypeControlOptions: {
             mapTypeIds: ['satellite', 'roadmap'], // Enable satellite and roadmap options
@@ -81,9 +81,8 @@ export default function Home() {
 
 
 
-            <p>This will be signin button</p>
+
             <div className='map-container'>
-                <p> This is the map!</p>
                 <Mapback />
             </div>
         </div>
