@@ -6,6 +6,7 @@ import Layout from "./Components/Layout/index"
 import Home from "./Pages/Home"
 import About from "./Pages/About"
 import Contact from "./Pages/Contact"
+import ScrollBox from './Components/ScrollBox';
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
     <div className="App">
       <Layout>
         <Routes>
+          <ScrollBox /> // Testing ScrollBox
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
