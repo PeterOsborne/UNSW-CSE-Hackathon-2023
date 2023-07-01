@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './index.scss';
 import ParkingTypeDropDown from '../ParkingTypeDropDown';
 // import { getData, setData } from '../../Backend/dataStore'
-import { createPlace } from '../../Backend/places' 
+import { createPlace } from '../../Backend/places'
 
 /* 
 This window is where sellers will put their spots up for renting
@@ -25,7 +25,7 @@ interface Props {
 }
 
 const UNSW: marktype = {
-    lat: -33.91668815669858, 
+    lat: -33.91668815669858,
     lng: 151.23118166932008,
     type: 0,
 }
@@ -35,14 +35,14 @@ const ListSpotWindow = (props: Props) => {
     //This function takes in latitude and longitude of two location and returns the distance between them as the crow flies (in km)
     function calcCrow(lat1: number, lon1: number, lat2: number, lon2: number): number {
         var R = 6371; // km
-        var dLat = toRad(lat2-lat1);
-        var dLon = toRad(lon2-lon1);
+        var dLat = toRad(lat2 - lat1);
+        var dLon = toRad(lon2 - lon1);
         var lat1 = toRad(lat1);
         var lat2 = toRad(lat2);
 
-        var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-        Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
-        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+        var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         var d = R * c;
         return d;
     }
@@ -74,12 +74,12 @@ const ListSpotWindow = (props: Props) => {
         setAvailEnd(event.target.value);
     }
 
-  
+
     function handleClick() {
         const currentMarker = props.markers[numOfMarkers - 1];
         const distance = Math.round(calcCrow(currentMarker.lat, currentMarker.lng, UNSW.lat, UNSW.lng) * 10) / 10;
         const avail = availStart + ' - ' + availEnd;
-        
+
 
         let newPlace: Place = {
             placeDistance: distance,
@@ -88,7 +88,10 @@ const ListSpotWindow = (props: Props) => {
             placeAvailability: avail,
             marker: currentMarker,
         }
+
+
         createPlace(newPlace);
+        currentMarker.type = 0;
     }
 
     let numOfMarkers = props.markers.length;
