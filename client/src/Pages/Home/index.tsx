@@ -10,6 +10,7 @@ import './style.scss';
 import ScrollBox from '../../Components/ScrollBox';
 import ListSpotWindow from "../../Components/ListSpotWindow";
 import { NavBar } from "../../Components/NavBar";
+import { Console } from "console";
 interface PropsLookingToBox {
     option: number //if 0 then rent, if 1 then offer
 }
@@ -38,6 +39,9 @@ var mapOptions = {
     // Set the default map type to satellite
 
 };
+
+
+
 
 
 
@@ -71,13 +75,22 @@ const Mapback = (props: MapProps) => {
         props.markers?.forEach(({ lat, lng }) => bounds.extend({ lat, lng }));
         map.setMapTypeId('roadmap');
 
+
         // map.fitBounds(bounds);
     };
+
+    const onMapClick = (e: any) => {
+        props.clicked({ lat: e.latLng?.lat(), lng: e.latLng?.lng() })
+        console.log("asdasd");
+    };
+
+
 
     return (
         <>
             <div className="background">
                 <GoogleMap {...mapOptions}
+                    onClick={onMapClick}
                     options={{
                         zoomControl: false,
                         streetViewControl: false,
@@ -85,11 +98,13 @@ const Mapback = (props: MapProps) => {
                         fullscreenControl: false
                     }}
                     onLoad={onMapLoad}
+
                 >
                     {props.markers.map(({ lat, lng }, index) => (
                         <MarkerF position={{ lat, lng }}
                             onClick={() => {
                                 handleMarkerClick(index, lat, lng);
+
                             }} />
                     ))}
                 </GoogleMap>
@@ -197,7 +212,7 @@ export default function Home() {
         <div className='home-container'>
             <div className='map-container'>
                 <Mapback markers={markers} clicked={function (place: marktype): void {
-                    // setMarkers(markers => [...markers, place])
+                    setMarkers(markers => [...markers, place])
                 }} />
             </div>
             <NavBar />
