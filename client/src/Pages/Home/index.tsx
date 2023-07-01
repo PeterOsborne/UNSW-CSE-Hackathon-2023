@@ -10,7 +10,7 @@ import './style.scss';
 import ScrollBox from '../../Components/ScrollBox';
 import ListSpotWindow from "../../Components/ListSpotWindow";
 import { NavBar } from "../../Components/NavBar";
-import { Console } from "console";
+//import { Console } from "console";
 import { LookingToBox } from "../../Components/LookingToBox";
 interface PropsLookingToBox {
     option: number //if 0 then rent, if 1 then offer
