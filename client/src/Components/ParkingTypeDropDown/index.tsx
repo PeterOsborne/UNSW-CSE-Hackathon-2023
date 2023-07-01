@@ -42,7 +42,7 @@ export default function Example() {
                     'block px-4 py-2 text-sm'
                   )}
                 >
-                  Account settings
+                  Driveway
                 </a>
               )}
             </Menu.Item>
@@ -55,7 +55,7 @@ export default function Example() {
                     'block px-4 py-2 text-sm'
                   )}
                 >
-                  Support
+                  Apartment Garage
                 </a>
               )}
             </Menu.Item>
@@ -68,7 +68,7 @@ export default function Example() {
                     'block px-4 py-2 text-sm'
                   )}
                 >
-                  License
+                  Carport
                 </a>
               )}
             </Menu.Item>
@@ -82,7 +82,7 @@ export default function Example() {
                       'block w-full px-4 py-2 text-left text-sm'
                     )}
                   >
-                    Sign out
+                    Parking Lot
                   </button>
                 )}
               </Menu.Item>
