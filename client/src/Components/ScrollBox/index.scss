@@ -1,12 +1,25 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+.scrollbar {
+    height: 100px;
 
-.stupidshit.item {
-    background-color: rgba(255, 0, 0, 0.473);
+    // display: flex;
 
+    .box-item {
+        width: 50%;
+        text-align: left;
+        border-width: 0;
+        border-radius: 10px;
+        transition: all 0.2s;
+
+
+    }
+
+    .box-item:hover {
+        background-color: rgb(146, 146, 146, 0.3)
+    }
 
     .selected {
-        background: red;
+        background-color: rgba(66, 66, 66, 0.137) !important;
     }
+
+
 }
