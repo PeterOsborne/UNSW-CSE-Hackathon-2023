@@ -20,7 +20,6 @@ const ScrollBox = (props: Props) => {
   useEffect(() => {
 
     props.onSelect(props.items[selected], selected)
-    console.log("i hate this")
   }, [selected])
 
 
@@ -38,20 +37,20 @@ const ScrollBox = (props: Props) => {
   // };
 
   return (
-    <div className="h-80 w-80">
+    <div className="scrollbar">
       <div className="flex flex-col">
         <div>Sort by: </div>
       </div>
-      <div className="overflow-y-scroll">
-        <ul className="pl-2 pr-2"> {/* Padding of 2 around all the boxes */}
+      <div className="">
+        <ul className=""> {/* Padding of 2 around all the boxes */}
 
           {props.items.map((item, index) => (
             <li key={index} onClick={() => {
 
               setSelected(index)
             }}>
-              <div className={classNames("pt-2", index === selected && "selected")} >
-                <div className="border-2 border-slate-600 rounded-md bg-slate-200">
+              <div className={classNames("pt-2", "box-item-cont")} >
+                <div className={classNames("border-2 ", "box-item", index === selected && "selected")}>
                   <div>
                     <strong>placeName:</strong> {item.placeName}
                   </div>

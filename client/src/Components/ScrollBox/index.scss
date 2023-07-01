@@ -1,12 +1,29 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+.scrollbar {
+    height: 100px;
 
-.stupidshit.item {
-    background-color: rgba(255, 0, 0, 0.473);
+    // display: flex;
 
+    .box-item {
+        width: 50%;
+        text-align: left;
+        border-width: 0;
+        border-color: white;
+        border-radius: 10px;
+        transition: all 0.3s;
+        backdrop-filter: blur(2px);
+
+
+    }
+
+    .box-item:hover {
+        background-color: rgb(146, 146, 146, 0.1);
+        box-shadow: 0.3em 0.3em 1em rgba(0, 0, 0, 0.1);
+    }
 
     .selected {
-        background: red;
+        background-color: rgba(66, 66, 66, 0.137) !important;
+        box-shadow: 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
     }
+
+
 }
