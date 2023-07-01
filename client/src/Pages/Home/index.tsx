@@ -96,7 +96,6 @@ const Mapback = (props: MapProps) => {
 
     const onMapClick = (e: any) => {
         props.clicked({ lat: e.latLng?.lat(), lng: e.latLng?.lng(), type: 1 })
-        console.log("asdasd");
     };
 
 
@@ -155,9 +154,7 @@ export default function Home() {
 
     const [markers, setMarkers] = useState<marktype[]>(getPlaceList().map((mark) => mark.marker));
 
-    useEffect(() => {
-        console.log("added")
-    }, markers);
+
 
 
     return (
