@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './style.scss';
+import ParkingTypeDropDown from '../ParkingTypeDropDown';
 
 /* 
 This window is where sellers will put their spots up for renting
@@ -18,9 +19,11 @@ const ListSpotWindow = (props: Props) => {
 
       <div className="grid-cols-2">
         <div className="">Parking Type</div>
-        <div>driveway</div>
-        <div>Spot Availability</div>
-        <div>Spot Price</div>
+        <div className=""><ParkingTypeDropDown/></div>
+        <div className="">Spot Availability</div>
+        <div className="">(spotAvaialbiulty here)</div>
+        <div className="">Spot Price</div>
+        <div className="">(spotprice here)</div>
       </div>
 
       <div className="flex flex-col">
