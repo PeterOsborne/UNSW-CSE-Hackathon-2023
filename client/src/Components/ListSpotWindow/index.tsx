@@ -11,6 +11,17 @@ interface Props {
 }
 
 const ListSpotWindow = () => {
+    let [disabled, setDisabled] = useState(true);
+    const [buttonColor, setButtonColor] = useState('grey');
+    const handleButtonClick = () => {
+        
+        setButtonColor('blue');
+        setDisabled(false);
+    };
+    function handleClick() {
+        console.log("CLICKED");
+    }
+
 
   return (
     <div>
@@ -28,7 +39,7 @@ const ListSpotWindow = () => {
                 <input className="w-3/12 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="start_avail" type="text" placeholder="00:00"></input> - <input className="w-3/12 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="start_avail" type="text" placeholder="24:00"></input>
                 </div>
                 <div className="flex justify-center p-3">
-                    <button className="flex text-sm w-8/12 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    <button onClick={handleButtonClick} className="flex text-sm w-8/12 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     + Add Availability
                     </button>
                 </div>
@@ -42,7 +53,7 @@ const ListSpotWindow = () => {
         </div>
         </div>
         <div className="flex flex-col pt-2">
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <button  style={{ backgroundColor: buttonColor }} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" disabled={disabled} onClick={handleClick} >
                 Post parking spot!
             </button>
         </div>
