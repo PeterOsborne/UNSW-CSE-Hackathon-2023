@@ -89,9 +89,13 @@ const ListSpotWindow = (props: Props) => {
             marker: currentMarker,
         }
 
-
         createPlace(newPlace);
         currentMarker.type = 0;
+        setName('');
+        setPrice('');
+        setAvailStart('');
+        setAvailEnd('');
+        
     }
 
     let numOfMarkers = props.markers.length;
