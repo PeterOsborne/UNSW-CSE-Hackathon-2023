@@ -82,7 +82,7 @@ const Mapback = (props: MapProps) => {
     };
 
     const onMapClick = (e: any) => {
-        props.clicked({ lat: e.latLng?.lat(), lng: e.latLng?.lng(), type: 0 })
+        props.clicked({ lat: e.latLng?.lat(), lng: e.latLng?.lng(), type: 1 })
         console.log("asdasd");
     };
 
