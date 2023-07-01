@@ -4,7 +4,8 @@ import classNames from 'classnames';
 
 interface marktype {
   lat: number,
-  lng: number
+  lng: number,
+  type: number
 }
 interface Place {
   placeDistance: number;
