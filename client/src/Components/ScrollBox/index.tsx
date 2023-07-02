@@ -47,7 +47,7 @@ const ScrollBox = (props: Props) => {
 
   return (
     <div className="scrollbar">
-          <div className="flex flex-col p-1 shadow">
+          <div className="flex flex-col p-1 shadow pt-2">
               <button style={{ backgroundColor: buttonColor }} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" >
                   Book this spot!
               </button>
