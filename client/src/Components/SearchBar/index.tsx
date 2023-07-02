@@ -6,7 +6,7 @@ interface Props {
 
 }
 
-export interface Place {
+interface Place {
     placeDistance: number;
     placePriceRate: number;
     placeName: string;
@@ -14,18 +14,21 @@ export interface Place {
     marker: marktype;
 }
 
-export interface Data {
+interface Data {
     places: Place[];
 }
 
-export interface marktype {
+interface marktype {
     lat: number,
     lng: number,
     type: number
 }
 
 
-const SearchBar = () => {
+interface Props {
+    update: (data: Data) => void;
+}
+const SearchBar = (props: Props) => {
     const [searchTerm, setSearchTerm] = useState('');
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,7 +50,7 @@ const SearchBar = () => {
                 return 1;
             } else if (!name1Frag.includes(searchTerm) && (name2Frag.includes(searchTerm))) {
                 return -1;
-            } else if (name1Frag.includes(searchTerm) && (name2Frag.includes(searchTerm))){
+            } else if (name1Frag.includes(searchTerm) && (name2Frag.includes(searchTerm))) {
                 return 0;
             } else if (name1.includes(searchTerm) && !(name2.includes(searchTerm))) {
                 return 1;
@@ -56,14 +59,14 @@ const SearchBar = () => {
             }
             return 0;
         });
-        setData(data);
+        props.update(data);
     };
 
     return (
         <div className='flex items-center justify-center '>
             <div className='flex pr-1'>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                 </svg>
             </div>
             <div className="flex font-medium text-lg pr-7">
