@@ -273,8 +273,8 @@ export default function Home() {
                 }} />
 
             </div>
-            <DistanceEtaLabel />
-            
+            {distance && <DistanceEtaLabel time={distance} />}
+
         </div>
     )
 }

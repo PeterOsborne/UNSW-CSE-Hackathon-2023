@@ -35,6 +35,7 @@ export const LookingToBox = (props: PropsLookingToBox) => {
 
 
     const [selected, setSelected] = useState(items[0]);
+    const [buttonColor, setButtonColor] = useState('grey');
 
     const [value, setValue] = React.useState('distance');
 
@@ -104,6 +105,11 @@ export const LookingToBox = (props: PropsLookingToBox) => {
                     <div className={classNames("rentSpot")}>
                         <ScrollBox items={items} onSelect={handelSelect}></ScrollBox>
                     </div>
+                </div>
+                <div className="flex flex-col pt-2">
+                    <button style={{ backgroundColor: buttonColor }} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" >
+                        Post parking spot!
+                    </button>
                 </div>
             </>
         );
