@@ -103,7 +103,11 @@ export const LookingToBox = (props: PropsLookingToBox) => {
 
                 <div className="">
                     <div className={classNames("rentSpot")}>
-                        <ScrollBox items={items} onSelect={handelSelect}></ScrollBox>
+                        <ScrollBox items={items} onSelect={handelSelect} book={function (): void {
+                            const newList = items.filter((item) => item !== selected);
+                            setItems(newList)
+                            setSelected(newList[0])
+                        }}></ScrollBox>
                     </div>
                 </div>
             </>
