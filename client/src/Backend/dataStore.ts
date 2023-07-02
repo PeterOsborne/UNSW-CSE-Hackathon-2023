@@ -20,7 +20,7 @@ interface Place {
 
 let dataStore: Data = {
     places: [
-        { placeDistance: 2.3, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00', marker: { lat: -33.916758, lng: 151.225967, type: 0 } },
+        { placeDistance: 0.8, placePriceRate: 1, placeName: '23 Rolfe St, Rosebury NSW 2018', placeAvailability: '09:00 - 16:00', marker: { lat: -33.916758, lng: 151.225967, type: 0 } },
         { placeDistance: 14.5, placePriceRate: 3, placeName: 'Someones Home', placeAvailability: '06:00 - 16:00', marker: { lat: -33.516758, lng: 151.225967, type: 0 } }
     ]
 }
