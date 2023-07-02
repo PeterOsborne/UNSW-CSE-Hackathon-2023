@@ -75,7 +75,9 @@ export const LookingToBox = (props: PropsLookingToBox) => {
             <>
                 <div className="flex flex-col bg-white rounded-lg pl-7 pr-7 pt-2 pb-2 drop-shadow-lg">
                     <div className="flex justify-end">
-                        <SearchBar />
+                        <div className="flex pr-16">
+                            <SearchBar />
+                        </div>
                         <div className="flex font-medium text-lg pr-7">
                             Sort by:
                         </div>
