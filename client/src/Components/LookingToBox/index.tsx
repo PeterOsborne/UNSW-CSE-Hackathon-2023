@@ -85,7 +85,7 @@ export const LookingToBox = (props: PropsLookingToBox) => {
                         <div className="flex justify-end p-1">
                             <form method="post">
                                 <label>
-                                    <select value={value} name="selectedSort" onChange={handleChange} className="font-medium">
+                                    <select value={value} name="selectedSort" onChange={handleChange} className="border rounded py-2 px-3 inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 font-medium">
                                         <option value="distance">Distance</option>
                                         <option value="price">Price</option>
                                         <option value="alphabetically">Alphabetically</option>
