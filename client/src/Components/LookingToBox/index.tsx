@@ -43,15 +43,10 @@ export const LookingToBox = (props: PropsLookingToBox) => {
         let places = data.places;
         setValue(e.target.value);
         if (value === "price") {
-            console.log("distance");
-            console.log(places);
             places.sort((place1: Place, place2: Place) => place1.placeDistance - place2.placeDistance);
-            console.log(places);
         } else if (value === "distance") {
-            console.log("price");
             places.sort((place1: Place, place2: Place) => place1.placePriceRate - place2.placePriceRate);
         } else if (value === "alphabetically") {
-            console.log("alpha");
             places.sort((place1: Place, place2: Place) => {
                 if (place1.placeName < place2.placeName) {
                     return -1;
