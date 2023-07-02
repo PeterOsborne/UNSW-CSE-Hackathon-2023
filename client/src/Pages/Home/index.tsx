@@ -168,6 +168,10 @@ export default function Home() {
 
 
     const [markers, setMarkers] = useState<marktype[]>(getPlaceList().map((mark) => mark.marker));
+    const [maptype, setMapType] = useState("roadmap");
+
+
+    const [distance, setDistance] = useState<string | undefined>('');
     // const [startmkr, setstartmkr] = useState<google.maps.LatLng>
 
     // var start = new google.maps.LatLng(-33.9176124300634, 151.2314678405397);
@@ -195,6 +199,8 @@ export default function Home() {
         })
 
         SetDirRes(res)
+        setDistance(res.routes[0].legs[0].duration?.text)
+        console.log(distance)
     }
 
     function clearRoute() {
@@ -221,18 +227,20 @@ export default function Home() {
             </div>
             <NavBar toggleMap={function (isSat: boolean): void {
                 if (mapRef) {
-                    console.log("Change")
+
                     if (isSat) {
                         mapRef.setMapTypeId('roadmap');
+                        setMapType('roadmap')
                     } else {
                         mapRef.setMapTypeId('satellite');
+                        setMapType('satellite')
                     }
                 }
             }} />
 
             <div className='menu'>
                 <div className=""> {/* flex flex-col content-center items-center */}
-                    <p className="flex text-3xl font-medium p-2 justify-center drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.4)]"> {/* bg-white rounded-md w-4/12  */}
+                    <p className={maptype == 'roadmap' ? "flex text-3xl font-medium p-2 duration-200 justify-center drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.4)]" : "flex duration-200 text-3xl font-medium p-2 justify-center text-white drop-shadow-[0_1.2px_1.2px_rgba(255,255,255,0.4)]"}> {/* bg-white rounded-md w-4/12  */}
                         Looking to:
                     </p>
                 </div>
