@@ -18,6 +18,7 @@ interface Place {
 interface Props {
   items: Place[],
   onSelect: (selected: Place, index: number) => void
+  book: () => void;
 }
 
 
@@ -48,11 +49,18 @@ const ScrollBox = (props: Props) => {
   //   setItems(updatedItems);
   // };
 
+  const selectthing = () => {
+    props.book()
+    setSelected(-1)
+  };
+
   return (
     <div className="scrollbar">
       <div className="flex flex-col p-1 shadow pt-2">
         {selected != -1 &&
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" >
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={selectthing
+
+          }>
             Book this spot!
           </button>}
       </div>
