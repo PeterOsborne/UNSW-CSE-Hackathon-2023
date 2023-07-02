@@ -10,6 +10,7 @@ import './style.scss';
 import ScrollBox from '../../Components/ScrollBox';
 import ListSpotWindow from "../../Components/ListSpotWindow";
 import { NavBar } from "../../Components/NavBar";
+import { DistanceEtaLabel } from "../../Components/DistanceEtaLabel";
 //import { Console } from "console";
 import { LookingToBox } from "../../Components/LookingToBox";
 import { getPlaceList } from "../../Backend/places";
@@ -264,6 +265,8 @@ export default function Home() {
                 }} />
 
             </div>
+            <DistanceEtaLabel />
+            
         </div>
     )
 }
