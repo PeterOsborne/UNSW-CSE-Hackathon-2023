@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import React from "react";
 import SearchBar from "../SearchBar";
 
-import { getPlaceList } from "../../Backend/places"
+import { Data, getPlaceList } from "../../Backend/places"
 import { GoogleMap } from "@react-google-maps/api";
 import { getData, setData } from "../../Backend/dataStore";
 interface PropsLookingToBox {
@@ -35,6 +35,7 @@ export const LookingToBox = (props: PropsLookingToBox) => {
 
 
     const [selected, setSelected] = useState(items[0]);
+    const [buttonColor, setButtonColor] = useState('grey');
 
     const [value, setValue] = React.useState('distance');
 
@@ -73,13 +74,15 @@ export const LookingToBox = (props: PropsLookingToBox) => {
                 <div className="flex flex-col bg-white rounded-lg pl-7 pr-7 pt-2 pb-2 drop-shadow-lg">
                     <div className="flex justify-end">
                         <div className="flex pr-12">
-                            <SearchBar />
+                            <SearchBar update={function (data: Data): void {
+                                setItems(data.places);
+                            }} />
                         </div>
                         <div className="flex flex-row font-medium text-lg pr-7">
                             <div className="flex justify-center items-center">
                                 Sort by:
                             </div>
-                           
+
                         </div>
 
                         <div className="flex justify-end p-1">
@@ -102,6 +105,11 @@ export const LookingToBox = (props: PropsLookingToBox) => {
                     <div className={classNames("rentSpot")}>
                         <ScrollBox items={items} onSelect={handelSelect}></ScrollBox>
                     </div>
+                </div>
+                <div className="flex flex-col pt-2">
+                    <button style={{ backgroundColor: buttonColor }} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" >
+                        Post parking spot!
+                    </button>
                 </div>
             </>
         );
