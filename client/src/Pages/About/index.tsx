@@ -32,7 +32,7 @@ export default function About() {
               </li>
             </ul>
             <p className="text-gray-700 mt-4">
-              We believe that finding and booking parking spots should be hassle-free. Our app aims to simplify the process and save your time. If you have any questions or feedback, please don't hesitate to reach out to us.
+              We believe that finding and booking parking spots should be hassle-free. If you have any questions or feedback, please don't hesitate to reach out to us.
             </p>
           </div>
         </div>
