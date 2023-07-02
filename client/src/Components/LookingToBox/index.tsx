@@ -106,11 +106,6 @@ export const LookingToBox = (props: PropsLookingToBox) => {
                         <ScrollBox items={items} onSelect={handelSelect}></ScrollBox>
                     </div>
                 </div>
-                <div className="flex flex-col pt-2">
-                    <button style={{ backgroundColor: buttonColor }} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" >
-                        Post parking spot!
-                    </button>
-                </div>
             </>
         );
     }
