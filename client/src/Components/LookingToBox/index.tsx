@@ -13,6 +13,7 @@ interface PropsLookingToBox {
     haveMadeNewSpot: marktype[]
     mapref: GoogleMap | null,
     changelastmarker: () => void;
+    selectBox: (end: marktype) => void;
 }
 interface marktype {
     lat: number,
@@ -63,6 +64,7 @@ export const LookingToBox = (props: PropsLookingToBox) => {
     const handelSelect = (selected: Place, index: number) => {
         setSelected(selected);
         props.mapref?.panTo({ lat: selected.marker.lat, lng: selected.marker.lng })
+        props.selectBox(selected.marker);
     };
 
     if (props.option == 0) {
@@ -70,9 +72,14 @@ export const LookingToBox = (props: PropsLookingToBox) => {
             <>
                 <div className="flex flex-col bg-white rounded-lg pl-7 pr-7 pt-2 pb-2 drop-shadow-lg">
                     <div className="flex justify-end">
-                        <SearchBar />
-                        <div className="flex font-medium text-lg pr-7">
-                            Sort by:
+                        <div className="flex pr-12">
+                            <SearchBar />
+                        </div>
+                        <div className="flex flex-row font-medium text-lg pr-7">
+                            <div className="flex justify-center items-center">
+                                Sort by:
+                            </div>
+                           
                         </div>
 
                         <div className="flex justify-end p-1">
