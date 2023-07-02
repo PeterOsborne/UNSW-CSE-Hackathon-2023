@@ -1,5 +1,5 @@
-import { GoogleMap, useLoadScript, Marker, StreetViewService } from "@react-google-maps/api"
-import { useEffect, useMemo } from "react";
+import { GoogleMap, useLoadScript, Marker, StreetViewService, DirectionsRenderer } from "@react-google-maps/api"
+import { useEffect, useMemo, useRef } from "react";
 import React, { useState } from 'react';
 import SearchBar from '../../Components/SearchBar/index'
 import { ButtonGroup, ToggleButtonGroup, ToggleButton, Button } from 'react-bootstrap';
@@ -52,8 +52,8 @@ interface MapProps {
     markers: marktype[],
     clicked: (place: marktype) => void,
     mapRef: (GoogleMap | null),
-    setMapRef: (map: GoogleMap | null) => void;
-
+    setMapRef: (map: any | null) => void;
+    dirRes: google.maps.DirectionsResult
 }
 
 
@@ -80,6 +80,7 @@ const Mapback = (props: MapProps) => {
     };
 
     const onMapLoad = (map: any) => {
+        console.log(typeof (map))
         props.setMapRef(map);
         const bounds = new google.maps.LatLngBounds();
 
@@ -136,7 +137,10 @@ const Mapback = (props: MapProps) => {
                             }} />
 
 
+
                     ))}
+                    <DirectionsRenderer directions={props.dirRes} />
+                    {/* {props.dirRes && <DirectionsRenderer directions={props.dirRes} />} */}
                 </GoogleMap>
 
 
@@ -149,14 +153,54 @@ const Mapback = (props: MapProps) => {
 
 
 
+
+
+
 export default function Home() {
-    const [mapRef, setMapRef] = useState<GoogleMap | null>(null);
+
+    const [mapRef, setMapRef] = useState<any | null>(null);
     const [menuOption, setMenuOption] = useState(0);
+    // const [directionsResponse, SetDirRes] = useState<google.maps.DirectionsResult | null>(null);
+    const [directionsResponse, SetDirRes] = useState<google.maps.DirectionsResult>({} as google.maps.DirectionsResult);
+
 
     //have made new spot
 
 
     const [markers, setMarkers] = useState<marktype[]>(getPlaceList().map((mark) => mark.marker));
+    // const [startmkr, setstartmkr] = useState<google.maps.LatLng>
+
+    // var start = new google.maps.LatLng(-33.9176124300634, 151.2314678405397);
+    // var end = 
+
+    // const startRef = useRef<google.maps.LatLng |null >()
+    // const endRef = useRef()
+
+    async function calRoute(end: marktype) {
+
+
+
+        const directionService = new google.maps.DirectionsService()
+
+
+        var directionsRenderer = new window.google.maps.DirectionsRenderer();
+
+        // const haight = new 
+        // const des = new google.maps.LatLng(end.lat, end.lng);
+
+        const res = await directionService.route({
+            origin: { lat: -33.9176124300634, lng: 151.2314678405397 },
+            destination: { lat: end.lat, lng: end.lng },
+            travelMode: google.maps.TravelMode.DRIVING
+        })
+
+        SetDirRes(res)
+    }
+
+    function clearRoute() {
+        SetDirRes({} as google.maps.DirectionsResult)
+
+    }
 
 
 
@@ -172,10 +216,19 @@ export default function Home() {
                     }
 
                 }} mapRef={null} setMapRef={function (map: GoogleMap | null): void {
-                    setMapRef(map)
-                }} />
+                    setMapRef(map);
+                }} dirRes={directionsResponse} />
             </div>
-            <NavBar />
+            <NavBar toggleMap={function (isSat: boolean): void {
+                if (mapRef) {
+                    console.log("Change")
+                    if (isSat) {
+                        mapRef.setMapTypeId('roadmap');
+                    } else {
+                        mapRef.setMapTypeId('satellite');
+                    }
+                }
+            }} />
 
             <div className='menu'>
                 <div className=""> {/* flex flex-col content-center items-center */}
@@ -194,10 +247,20 @@ export default function Home() {
                     </ToggleButtonGroup>
                 </div>
                 <LookingToBox option={menuOption} haveMadeNewSpot={markers} mapref={mapRef} changelastmarker={function (): void {
-                    var mark = markers[markers.length - 1]
+                    var mark = markers[markers.length - 1];
                     mark.type = 0;
-                    console.log("hello")
-                    setMarkers(markers => ([...markers, mark]))
+                    console.log("hello");
+                    setMarkers(markers => ([...markers, mark]));
+                }} selectBox={function (end: marktype): void {
+                    clearRoute()
+                    if (mapRef) {
+                        calRoute(end)
+                        if (!directionsResponse) {
+
+                        }
+
+                    }
+
                 }} />
 
             </div>

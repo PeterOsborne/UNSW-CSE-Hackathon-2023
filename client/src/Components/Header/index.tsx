@@ -6,7 +6,9 @@ export const Header = () => {
     return (
         <>
             <div className='header-container'>
-                <NavBar />
+                {/* <NavBar toggleMap={function (isSat: boolean): void {
+                    throw new Error("Function not implemented.")
+                }} /> */}
             </div>
         </>
     )

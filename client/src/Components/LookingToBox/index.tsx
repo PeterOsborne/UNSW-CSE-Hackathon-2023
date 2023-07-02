@@ -13,6 +13,7 @@ interface PropsLookingToBox {
     haveMadeNewSpot: marktype[]
     mapref: GoogleMap | null,
     changelastmarker: () => void;
+    selectBox: (end: marktype) => void;
 }
 interface marktype {
     lat: number,
@@ -68,6 +69,7 @@ export const LookingToBox = (props: PropsLookingToBox) => {
     const handelSelect = (selected: Place, index: number) => {
         setSelected(selected);
         props.mapref?.panTo({ lat: selected.marker.lat, lng: selected.marker.lng })
+        props.selectBox(selected.marker);
     };
 
     if (props.option == 0) {
