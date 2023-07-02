@@ -125,7 +125,19 @@ const ListSpotWindow = (props: Props) => {
 
                 <div className="grid grid-cols-2">
                     <div className="p-2 font-medium">Parking Type</div>
-                    <div className="p-2"><ParkingTypeDropDown /></div>
+                    
+                    <div className="relative inline-block text-center ">
+                        <form method="post">
+                            <label>
+                                <select name="selectedSort" className=" border rounded py-2 px-3 inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" >
+                                    <option value="distance">Driveway</option>
+                                    <option value="price">Private Spot</option>
+                                    <option value="alphabetically">Car Park</option>
+                                </select>
+                            </label>
+                        </form>
+                    </div>
+
                     <div className="p-2 font-medium">Spot Availability</div>
                     <div className="p-2 flex flex-col">
                         {Array.from(Array(numerofTimes).keys()).map((item, index) => (
