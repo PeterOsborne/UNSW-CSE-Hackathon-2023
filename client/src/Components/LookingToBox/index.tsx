@@ -77,15 +77,20 @@ export const LookingToBox = (props: PropsLookingToBox) => {
             <>
                 <div className="flex flex-col bg-white rounded-lg pl-7 pr-7 pt-2 pb-2 drop-shadow-lg">
                     <div className="flex justify-end">
-                        <SearchBar />
-                        <div className="flex font-medium text-lg pr-7">
-                            Sort by:
+                        <div className="flex pr-12">
+                            <SearchBar />
+                        </div>
+                        <div className="flex flex-row font-medium text-lg pr-7">
+                            <div className="flex justify-center items-center">
+                                Sort by:
+                            </div>
+                           
                         </div>
 
                         <div className="flex justify-end p-1">
                             <form method="post">
                                 <label>
-                                    <select value={value} name="selectedSort" onChange={handleChange} className="font-medium">
+                                    <select value={value} name="selectedSort" onChange={handleChange} className="border rounded py-2 px-3 inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 font-medium">
                                         <option value="distance">Distance</option>
                                         <option value="price">Price</option>
                                         <option value="alphabetically">Alphabetically</option>
